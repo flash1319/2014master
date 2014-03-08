@@ -1,0 +1,635 @@
+# Wind River Workbench generated Makefile.
+# Do not edit!!!
+#
+# The file ".wrmakefile" is the template used by the Wind River Workbench to
+# generate the makefiles of this project. Add user-specific build targets and
+# make rules only(!) in this project's ".wrmakefile" file. These will then be
+# automatically dumped into the makefiles.
+
+WIND_HOME := $(subst \,/,$(WIND_HOME))
+WIND_BASE := $(subst \,/,$(WIND_BASE))
+WIND_USR := $(subst \,/,$(WIND_USR))
+
+all : pre_build main_all post_build
+
+_clean ::
+	@echo "make: removing targets and objects of `pwd`"
+
+TRACE=0
+TRACEON=$(TRACE:0=@)
+TRACE_FLAG=$(TRACEON:1=)
+
+MAKEFILE := Makefile
+
+FLEXIBLE_BUILD := 1
+
+BUILD_SPEC = PPC603gnu
+DEBUG_MODE = 1
+ifeq ($(DEBUG_MODE),1)
+MODE_DIR := Debug
+else
+MODE_DIR := NonDebug
+endif
+OBJ_DIR := .
+WS_ROOT_DIR := C:/WindRiver/Robotics
+PRJ_ROOT_DIR := $(WS_ROOT_DIR)/R2014_SCOTT_BOT
+
+
+
+#Global Build Macros
+PROJECT_TYPE = DKM
+DEFINES = 
+EXPAND_DBG = 0
+
+
+#BuildSpec specific Build Macros
+VX_CPU_FAMILY = ppc
+CPU = PPC603
+TOOL_FAMILY = gnu
+TOOL = gnu
+TOOL_PATH = 
+CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp -mlongcall
+LIBPATH = 
+LIBS = 
+
+IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
+
+IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
+
+IDE_DEFINES = 
+
+
+
+#BuildTool flags
+ifeq ($(DEBUG_MODE),1)
+DEBUGFLAGS_C-Compiler = -g
+DEBUGFLAGS_C++-Compiler = -g
+DEBUGFLAGS_Linker = -g
+DEBUGFLAGS_Partial-Image-Linker = 
+DEBUGFLAGS_Librarian = 
+DEBUGFLAGS_Assembler = -g
+else
+DEBUGFLAGS_C-Compiler = -O2 -fstrength-reduce -fno-builtin
+DEBUGFLAGS_C++-Compiler = -O2 -fstrength-reduce -fno-builtin
+DEBUGFLAGS_Linker = -O2 -fstrength-reduce -fno-builtin
+DEBUGFLAGS_Partial-Image-Linker = 
+DEBUGFLAGS_Librarian = 
+DEBUGFLAGS_Assembler = -O2 -fstrength-reduce -fno-builtin
+endif
+
+
+#Project Targets
+PROJECT_TARGETS = CommandBasedRobotTemplate/$(MODE_DIR)/CommandBasedRobotTemplate.out \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/CommandBasedRobotTemplate_partialImage.o
+
+
+#Rules
+
+# CommandBasedRobotTemplate
+ifeq ($(DEBUG_MODE),1)
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -g
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -g
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -g
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -g
+else
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -O2 -fstrength-reduce -fno-builtin
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -O2 -fstrength-reduce -fno-builtin
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -O2 -fstrength-reduce -fno-builtin
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength-reduce -fno-builtin
+endif
+CommandBasedRobotTemplate/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : IDE_DEFINES = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : PROJECT_TYPE = DKM
+CommandBasedRobotTemplate/$(MODE_DIR)/% : DEFINES = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : EXPAND_DBG = 0
+CommandBasedRobotTemplate/$(MODE_DIR)/% : VX_CPU_FAMILY = ppc
+CommandBasedRobotTemplate/$(MODE_DIR)/% : CPU = PPC603
+CommandBasedRobotTemplate/$(MODE_DIR)/% : TOOL_FAMILY = gnu
+CommandBasedRobotTemplate/$(MODE_DIR)/% : TOOL = gnu
+CommandBasedRobotTemplate/$(MODE_DIR)/% : TOOL_PATH = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp -mlongcall
+CommandBasedRobotTemplate/$(MODE_DIR)/% : LIBPATH = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : LIBS = 
+CommandBasedRobotTemplate/$(MODE_DIR)/% : OBJ_DIR := CommandBasedRobotTemplate/$(MODE_DIR)
+
+OBJECTS_CommandBasedRobotTemplate = CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/CommandBasedRobotTemplate_partialImage.o
+
+CommandBasedRobotTemplate/$(MODE_DIR)/CommandBasedRobotTemplate.out : $(OBJECTS_CommandBasedRobotTemplate)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@";rm -f "$@";nmppc $(OBJECTS_CommandBasedRobotTemplate) $(IDE_LIBRARIES) | tclsh $(WIND_BASE)/host/resource/hutils/tcl/munch.tcl -c ppc > $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc $(DEBUGFLAGS_Linker) $(CC_ARCH_SPEC) -fdollars-in-identifiers -Wall $(ADDED_CFLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES)  -o $(OBJ_DIR)/ctdt.o -c $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X -T $(WIND_BASE)/target/h/tool/gnu/ldscripts/link.OUT -o "$@" $(OBJ_DIR)/ctdt.o $(OBJECTS_CommandBasedRobotTemplate) $(IDE_LIBRARIES) $(LIBPATH) $(LIBS)  $(ADDED_LIBPATH) $(ADDED_LIBS) && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
+
+CommandBasedRobotTemplate/$(MODE_DIR)/CommandBasedRobotTemplate_compile_file : $(FILE) ;
+
+_clean :: CommandBasedRobotTemplate/$(MODE_DIR)/CommandBasedRobotTemplate_clean
+
+CommandBasedRobotTemplate/$(MODE_DIR)/CommandBasedRobotTemplate_clean : 
+	$(TRACE_FLAG)if [ -d "CommandBasedRobotTemplate" ]; then cd "CommandBasedRobotTemplate"; rm -rf $(MODE_DIR); fi
+
+
+# CommandBasedRobotTemplate_partialImage
+ifeq ($(DEBUG_MODE),1)
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -g
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -g
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -g
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -g
+else
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C-Compiler = -O2 -fstrength-reduce -fno-builtin
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_C++-Compiler = -O2 -fstrength-reduce -fno-builtin
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Linker = -O2 -fstrength-reduce -fno-builtin
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Partial-Image-Linker = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Librarian = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength-reduce -fno-builtin
+endif
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : IDE_DEFINES = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : PROJECT_TYPE = DKM
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : DEFINES = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : EXPAND_DBG = 0
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : VX_CPU_FAMILY = ppc
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : CPU = PPC603
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : TOOL_FAMILY = gnu
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : TOOL = gnu
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : TOOL_PATH = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : CC_ARCH_SPEC = -mcpu=603 -mstrict-align -mno-implicit-fp -mlongcall
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : LIBPATH = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : LIBS = 
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/% : OBJ_DIR := CommandBasedRobotTemplate_partialImage/$(MODE_DIR)
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/CommandBase.o : $(PRJ_ROOT_DIR)/CommandBase.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/CommandBasedRobot.o : $(PRJ_ROOT_DIR)/CommandBasedRobot.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousFive.o : $(PRJ_ROOT_DIR)/Commands/CgAutonomousFive.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousFour.o : $(PRJ_ROOT_DIR)/Commands/CgAutonomousFour.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousOne.o : $(PRJ_ROOT_DIR)/Commands/CgAutonomousOne.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousThree.o : $(PRJ_ROOT_DIR)/Commands/CgAutonomousThree.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousTwo.o : $(PRJ_ROOT_DIR)/Commands/CgAutonomousTwo.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgShooterShoot.o : $(PRJ_ROOT_DIR)/Commands/CgShooterShoot.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdCameraLightOff.o : $(PRJ_ROOT_DIR)/Commands/CmdCameraLightOff.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdCameraLightOn.o : $(PRJ_ROOT_DIR)/Commands/CmdCameraLightOn.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveAutonomous.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveAutonomous.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeDisengage.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveBrakeDisengage.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeEngage.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveBrakeEngage.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveBrakeToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveChangeMode.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveChangeMode.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveProgrammed.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveProgrammed.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftHigh.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveShiftHigh.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftLow.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveShiftLow.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveShiftToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveToggleFront.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveToggleFront.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveWithJoystickArcade.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveWithJoystickArcade.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveWithJoystickTank.o : $(PRJ_ROOT_DIR)/Commands/CmdDriveWithJoystickTank.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsDeploy.o : $(PRJ_ROOT_DIR)/Commands/CmdFunnelsDeploy.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsDeployAndWait.o : $(PRJ_ROOT_DIR)/Commands/CmdFunnelsDeployAndWait.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdFunnelsToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsUndeploy.o : $(PRJ_ROOT_DIR)/Commands/CmdFunnelsUndeploy.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtend.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderExtend.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtendAndWait.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderExtendAndWait.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtensionToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderExtensionToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderIntakeToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderIntakeToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoad.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderLoad.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoadingExtend.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderLoadingExtend.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoadingExtensionToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderLoadingExtensionToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderRetract.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderRetract.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderStop.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderStop.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderUnjam.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderUnjam.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderUnjamToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdLoaderUnjamToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopExtend.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterHardStopExtend.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopRetract.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterHardStopRetract.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterHardStopToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterLatch.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterLatch.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterLatchToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterLatchToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsDisengage.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterMotorsDisengage.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsEngage.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterMotorsEngage.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsToggle.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterMotorsToggle.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterPullBack.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterPullBack.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterReverse.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterReverse.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterReverseHeld.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterReverseHeld.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterShoot.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterShoot.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterSlowPull.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterSlowPull.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterStop.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterStop.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterUnlatch.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterUnlatch.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterUnlatchAutonomous.o : $(PRJ_ROOT_DIR)/Commands/CmdShooterUnlatchAutonomous.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdTelemetryRecordStart.o : $(PRJ_ROOT_DIR)/Commands/CmdTelemetryRecordStart.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdTelemetryRecordStop.o : $(PRJ_ROOT_DIR)/Commands/CmdTelemetryRecordStop.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWait.o : $(PRJ_ROOT_DIR)/Commands/CmdWait.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitAndDrive.o : $(PRJ_ROOT_DIR)/Commands/CmdWaitAndDrive.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForBallLoaded.o : $(PRJ_ROOT_DIR)/Commands/CmdWaitForBallLoaded.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForBallProximity.o : $(PRJ_ROOT_DIR)/Commands/CmdWaitForBallProximity.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForHotGoal.o : $(PRJ_ROOT_DIR)/Commands/CmdWaitForHotGoal.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForLatch.o : $(PRJ_ROOT_DIR)/Commands/CmdWaitForLatch.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForShooterDisengage.o : $(PRJ_ROOT_DIR)/Commands/CmdWaitForShooterDisengage.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForShooterEngage.o : $(PRJ_ROOT_DIR)/Commands/CmdWaitForShooterEngage.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForUnlatch.o : $(PRJ_ROOT_DIR)/Commands/CmdWaitForUnlatch.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/DecimalData.o : $(PRJ_ROOT_DIR)/InsightLT/DecimalData.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/DisplayData.o : $(PRJ_ROOT_DIR)/InsightLT/DisplayData.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/InsightLT.o : $(PRJ_ROOT_DIR)/InsightLT/InsightLT.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/IntegerData.o : $(PRJ_ROOT_DIR)/InsightLT/IntegerData.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/StringData.o : $(PRJ_ROOT_DIR)/InsightLT/StringData.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/Zone.o : $(PRJ_ROOT_DIR)/InsightLT/Zone.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/OI.o : $(PRJ_ROOT_DIR)/OI.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Drive.o : $(PRJ_ROOT_DIR)/Subsystems/Drive.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Funnels.o : $(PRJ_ROOT_DIR)/Subsystems/Funnels.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Loader.o : $(PRJ_ROOT_DIR)/Subsystems/Loader.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Pneumatics.o : $(PRJ_ROOT_DIR)/Subsystems/Pneumatics.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Shooter.o : $(PRJ_ROOT_DIR)/Subsystems/Shooter.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Telemetry.o : $(PRJ_ROOT_DIR)/Telemetry.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Utilities.o : $(PRJ_ROOT_DIR)/Utilities.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Vision.o : $(PRJ_ROOT_DIR)/Vision.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+OBJECTS_CommandBasedRobotTemplate_partialImage = CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/CommandBase.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/CommandBasedRobot.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousFive.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousFour.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousOne.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousThree.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousTwo.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgShooterShoot.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdCameraLightOff.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdCameraLightOn.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveAutonomous.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeDisengage.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeEngage.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveChangeMode.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveProgrammed.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftHigh.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftLow.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveToggleFront.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveWithJoystickArcade.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveWithJoystickTank.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsDeploy.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsDeployAndWait.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsUndeploy.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtend.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtendAndWait.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtensionToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderIntakeToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoad.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoadingExtend.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoadingExtensionToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderRetract.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderStop.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderUnjam.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderUnjamToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopExtend.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopRetract.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterLatch.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterLatchToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsDisengage.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsEngage.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsToggle.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterPullBack.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterReverse.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterReverseHeld.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterShoot.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterSlowPull.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterStop.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterUnlatch.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterUnlatchAutonomous.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdTelemetryRecordStart.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdTelemetryRecordStop.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWait.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitAndDrive.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForBallLoaded.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForBallProximity.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForHotGoal.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForLatch.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForShooterDisengage.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForShooterEngage.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForUnlatch.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/DecimalData.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/DisplayData.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/InsightLT.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/IntegerData.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/StringData.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/Zone.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/OI.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Drive.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Funnels.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Loader.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Pneumatics.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Shooter.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Telemetry.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Utilities.o \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Vision.o
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/CommandBasedRobotTemplate_partialImage.o : $(OBJECTS_CommandBasedRobotTemplate_partialImage)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_CommandBasedRobotTemplate_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/CommandBasedRobotTemplate_partialImage_compile_file : $(FILE) ;
+
+_clean :: CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/CommandBasedRobotTemplate_partialImage_clean
+
+CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/CommandBasedRobotTemplate_partialImage_clean : 
+	$(TRACE_FLAG)if [ -d "CommandBasedRobotTemplate_partialImage" ]; then cd "CommandBasedRobotTemplate_partialImage"; rm -rf $(MODE_DIR); fi
+
+force : 
+
+DEP_FILES := CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/CommandBase.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/CommandBasedRobot.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousFive.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousFour.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousOne.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousThree.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgAutonomousTwo.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CgShooterShoot.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdCameraLightOff.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdCameraLightOn.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveAutonomous.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeDisengage.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeEngage.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveBrakeToggle.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveChangeMode.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveProgrammed.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftHigh.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftLow.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveShiftToggle.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveToggleFront.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveWithJoystickArcade.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdDriveWithJoystickTank.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsDeploy.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsDeployAndWait.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsToggle.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdFunnelsUndeploy.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtend.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtendAndWait.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderExtensionToggle.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderIntakeToggle.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoad.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoadingExtend.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderLoadingExtensionToggle.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderRetract.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderStop.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderUnjam.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdLoaderUnjamToggle.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopExtend.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopRetract.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterHardStopToggle.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterLatch.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterLatchToggle.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsDisengage.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsEngage.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterMotorsToggle.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterPullBack.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterReverse.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterReverseHeld.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterShoot.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterSlowPull.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterStop.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterUnlatch.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdShooterUnlatchAutonomous.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdTelemetryRecordStart.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdTelemetryRecordStop.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWait.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitAndDrive.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForBallLoaded.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForBallProximity.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForHotGoal.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForLatch.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForShooterDisengage.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForShooterEngage.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Commands/CmdWaitForUnlatch.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/DecimalData.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/DisplayData.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/InsightLT.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/IntegerData.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/StringData.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/InsightLT/Zone.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/OI.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Drive.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Funnels.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Loader.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Pneumatics.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Subsystems/Shooter.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Telemetry.d CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Utilities.d \
+	 CommandBasedRobotTemplate_partialImage/$(MODE_DIR)/Objects/R2014_SCOTT_BOT/Vision.d
+-include $(DEP_FILES)
+
+
+
+-include $(PRJ_ROOT_DIR)/*.makefile
+
+-include *.makefile
+
+main_all : external_build $(PROJECT_TARGETS)
+	@echo "make: built targets of `pwd`"
+
+# entry point for extending the build
+external_build ::
+	@echo ""
+
+# main entry point for pre processing prior to the build
+pre_build :: $(PRE_BUILD_STEP) generate_sources
+	@echo ""
+
+# entry point for generating sources prior to the build
+generate_sources ::
+	@echo ""
+
+# main entry point for post processing after the build
+post_build :: $(POST_BUILD_STEP) deploy_output
+	@echo ""
+
+# entry point for deploying output after the build
+deploy_output ::
+	@echo ""
+
+clean :: external_clean $(CLEAN_STEP) _clean
+
+# entry point for extending the build clean
+external_clean ::
+	@echo ""

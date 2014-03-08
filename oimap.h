@@ -1,0 +1,50 @@
+
+#ifndef OIMAP_H
+#define OIMAP_H
+
+#include "xb360map.h"
+
+const static UINT32 PAD_DRIVER   = 1;
+const static UINT32 PAD_OPERATOR = 2;
+
+const static float  AXIS_FILTER = 0.04;
+
+const static UINT32 DRV_AXIS_X = XB360_AXIS_LEFT_X;
+const static UINT32 DRV_AXIS_Y = XB360_AXIS_LEFT_Y;
+
+const static UINT32 DRV_AXIS_X2 = XB360_AXIS_RIGHT_X;
+const static UINT32 DRV_AXIS_Y2 = XB360_AXIS_RIGHT_Y;
+
+const static UINT32 DRV_AXIS_Z  = XB360_AXIS_TRIGGER;
+
+const static UINT32 OPR_AXIS_X = XB360_AXIS_LEFT_X;
+const static UINT32 OPR_AXIS_Y = XB360_AXIS_LEFT_Y;
+
+const static UINT32 OPR_AXIS_X2 = XB360_AXIS_RIGHT_X;
+const static UINT32 OPR_AXIS_Y2 = XB360_AXIS_RIGHT_Y;
+
+const static UINT32 OPR_AXIS_Z  = XB360_AXIS_TRIGGER;
+
+//Driver buttons:
+const static UINT32 DRV_BRAKE				= XB360_B;
+const static UINT32 DRV_GEAR_SHIFT			= XB360_BUMPER_RIGHT;
+//const static UINT32 DRV_SWITCH_FRONT		= XB360_START;
+const static UINT32 SHOOTING_SAFE_OVERRIDE	= XB360_START;
+const static UINT32 DRV_SHOOT				= XB360_BACK;
+
+//Operator buttons:
+const static UINT32 OPR_LOADER_LOADING_EXTEND	= XB360_BUMPER_LEFT;
+const static UINT32 OPR_HARD_STOP				= XB360_Y;
+const static UINT32 OPR_LOADER_UNJAM			= XB360_B;
+const static UINT32 OPR_FUNNELS					= XB360_BUMPER_RIGHT;
+const static UINT32 OPR_LOADER_EXTEND			= XB360_A;
+const static UINT32 OPR_LOADER_RUN				= XB360_X;
+
+//Operator button diagnostics:
+const static UINT32 OPR_LATCH				= XB360_LEFT_STICK;
+const static UINT32 OPR_SHOOTER_REVERSE		= XB360_BACK;
+const static UINT32 OPR_ENGAGE_MOTORS		= XB360_START;
+const static UINT32 OPR_SHOOTER_PULL_BACK 	= XB360_RIGHT_STICK;
+
+
+#endif
