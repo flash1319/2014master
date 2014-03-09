@@ -186,7 +186,7 @@ private:
 			emoticon = "D=";
 		}
 		
-		sprintf(temp, "%d%s%s", pressure, "psi", emoticon.c_str());
+		sprintf(temp, "%d%s%s", pressure, "psi ", emoticon.c_str());
 		disp_pressureSensor->setData(temp);
 	}
 };
