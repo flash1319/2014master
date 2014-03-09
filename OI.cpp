@@ -88,10 +88,14 @@ float OI::scaleAxis(float input) {
 	return (pow(y, filteredInput) - 1) / k * Sign(input);
 }
 
-float OI::KinectLeftY(){
-	return m_leftArm->GetY();
+float OI::KinectLeftY() {
+	return -m_leftArm->GetY();
 }
 
-float OI::KinectRightY(){
-	return m_rightArm->GetY();
+float OI::KinectRightY() {
+	return -m_rightArm->GetY();
+}
+
+bool OI::KinectGoalHot() {
+	return KinectLeftY() > KINECT_HOT_GOAL_THRESHOLD && KinectRightY() > KINECT_HOT_GOAL_THRESHOLD;
 }

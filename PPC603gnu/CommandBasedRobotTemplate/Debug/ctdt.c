@@ -25,6 +25,8 @@ void _GLOBAL__I__ZN14CmdShooterStopC2Ev();
 
 void _GLOBAL__I__ZN15CgAutonomousOneC2Ev();
 
+void _GLOBAL__I__ZN15CgAutonomousSixC2Ev();
+
 void _GLOBAL__I__ZN15CgAutonomousTwoC2Ev();
 
 void _GLOBAL__I__ZN15CmdLoaderExtendC2Ev();
@@ -108,6 +110,8 @@ void _GLOBAL__I__ZN23CmdFunnelsDeployAndWaitC2Ev();
 void _GLOBAL__I__ZN23CmdTelemetryRecordStartC2Ev();
 
 void _GLOBAL__I__ZN23CmdWaitForBallProximityC2Ev();
+
+void _GLOBAL__I__ZN23CmdWaitForHotGoalKinectC2Ev();
 
 void _GLOBAL__I__ZN23CmdWaitForShooterEngageC2Ev();
 
@@ -219,6 +223,7 @@ void (*_ctors[])() =
     _GLOBAL__I__ZN14CmdLoaderUnjamC2Ev,
     _GLOBAL__I__ZN14CmdShooterStopC2Ev,
     _GLOBAL__I__ZN15CgAutonomousOneC2Ev,
+    _GLOBAL__I__ZN15CgAutonomousSixC2Ev,
     _GLOBAL__I__ZN15CgAutonomousTwoC2Ev,
     _GLOBAL__I__ZN15CmdLoaderExtendC2Ev,
     _GLOBAL__I__ZN15CmdShooterLatchC2Ev,
@@ -261,6 +266,7 @@ void (*_ctors[])() =
     _GLOBAL__I__ZN23CmdFunnelsDeployAndWaitC2Ev,
     _GLOBAL__I__ZN23CmdTelemetryRecordStartC2Ev,
     _GLOBAL__I__ZN23CmdWaitForBallProximityC2Ev,
+    _GLOBAL__I__ZN23CmdWaitForHotGoalKinectC2Ev,
     _GLOBAL__I__ZN23CmdWaitForShooterEngageC2Ev,
     _GLOBAL__I__ZN24CmdDriveWithJoystickTankC2Ev,
     _GLOBAL__I__ZN24CmdLoaderExtensionToggleC2Ev,
@@ -330,6 +336,8 @@ void _GLOBAL__D__ZN14CmdLoaderUnjamC2Ev();
 void _GLOBAL__D__ZN14CmdShooterStopC2Ev();
 
 void _GLOBAL__D__ZN15CgAutonomousOneC2Ev();
+
+void _GLOBAL__D__ZN15CgAutonomousSixC2Ev();
 
 void _GLOBAL__D__ZN15CgAutonomousTwoC2Ev();
 
@@ -414,6 +422,8 @@ void _GLOBAL__D__ZN23CmdFunnelsDeployAndWaitC2Ev();
 void _GLOBAL__D__ZN23CmdTelemetryRecordStartC2Ev();
 
 void _GLOBAL__D__ZN23CmdWaitForBallProximityC2Ev();
+
+void _GLOBAL__D__ZN23CmdWaitForHotGoalKinectC2Ev();
 
 void _GLOBAL__D__ZN23CmdWaitForShooterEngageC2Ev();
 
@@ -511,6 +521,7 @@ void (*_dtors[])() =
     _GLOBAL__D__ZN14CmdLoaderUnjamC2Ev,
     _GLOBAL__D__ZN14CmdShooterStopC2Ev,
     _GLOBAL__D__ZN15CgAutonomousOneC2Ev,
+    _GLOBAL__D__ZN15CgAutonomousSixC2Ev,
     _GLOBAL__D__ZN15CgAutonomousTwoC2Ev,
     _GLOBAL__D__ZN15CmdLoaderExtendC2Ev,
     _GLOBAL__D__ZN15CmdShooterLatchC2Ev,
@@ -553,6 +564,7 @@ void (*_dtors[])() =
     _GLOBAL__D__ZN23CmdFunnelsDeployAndWaitC2Ev,
     _GLOBAL__D__ZN23CmdTelemetryRecordStartC2Ev,
     _GLOBAL__D__ZN23CmdWaitForBallProximityC2Ev,
+    _GLOBAL__D__ZN23CmdWaitForHotGoalKinectC2Ev,
     _GLOBAL__D__ZN23CmdWaitForShooterEngageC2Ev,
     _GLOBAL__D__ZN24CmdDriveWithJoystickTankC2Ev,
     _GLOBAL__D__ZN24CmdLoaderExtensionToggleC2Ev,

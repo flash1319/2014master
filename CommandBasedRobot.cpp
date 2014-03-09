@@ -10,6 +10,7 @@
 #include "Commands/CgAutonomousThree.h"
 #include "Commands/CgAutonomousFour.h"
 #include "Commands/CgAutonomousFive.h"
+#include "Commands/CgAutonomousSix.h"
 #include "InsightLT/InsightLT.h"
 
 class CommandBasedRobot : public IterativeRobot {
@@ -35,9 +36,10 @@ private:
 		autoChooser = new SendableChooser();
 		autoChooser->AddDefault("One Ball Auto", new CgAutonomousOne());
 		autoChooser->AddObject("Waiting One Ball Auto", new CgAutonomousTwo());
-		autoChooser->AddObject("Hot Goal Auto", new CgAutonomousThree());
+		autoChooser->AddObject("Camera Hot Goal Auto", new CgAutonomousThree());
 		autoChooser->AddObject("Two Ball Auto", new CgAutonomousFour());
 		autoChooser->AddObject("No Ball Auto", new CgAutonomousFive());
+		autoChooser->AddObject("Kinect Hot Goal Auto", new CgAutonomousSix());
 		SmartDashboard::PutData("Autonomous Mode:", autoChooser);
 		SmartDashboard::PutData("Toggle Drive Mode", new CmdDriveChangeMode());
 		SmartDashboard::PutData("Start Recording Telemetry", new CmdTelemetryRecordStart());
@@ -128,6 +130,7 @@ private:
 		SmartDashboard::PutBoolean("Recording Telemetry", CommandBase::telemetry->RecordingTelemetry());
 		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
 		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
+		SmartDashboard::PutNumber("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());
 	}
 	
 	void UpdateTelemetry() {

@@ -5,7 +5,7 @@
 
 /**
  * @author Flash1319
- * One ball Autonomous mode - Shoots for the hot goal and then drives forward
+ * One ball Autonomous mode - Shoots for the hot goal based off camera and then drives forward
  */
 class CgAutonomousThree: public CommandGroup {
 public:	

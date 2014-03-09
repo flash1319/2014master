@@ -412,6 +412,7 @@
   C:/WindRiver/GitHub/2014master/Commands/CgAutonomousThree.h \
   C:/WindRiver/GitHub/2014master/Commands/CgAutonomousFour.h \
   C:/WindRiver/GitHub/2014master/Commands/CgAutonomousFive.h \
+  C:/WindRiver/GitHub/2014master/Commands/CgAutonomousSix.h \
   C:/WindRiver/GitHub/2014master/InsightLT/InsightLT.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/DigitalModule.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Task.h \
@@ -1245,6 +1246,8 @@ C:/WindRiver/GitHub/2014master/Commands/CgAutonomousThree.h:
 C:/WindRiver/GitHub/2014master/Commands/CgAutonomousFour.h:
 
 C:/WindRiver/GitHub/2014master/Commands/CgAutonomousFive.h:
+
+C:/WindRiver/GitHub/2014master/Commands/CgAutonomousSix.h:
 
 C:/WindRiver/GitHub/2014master/InsightLT/InsightLT.h:
 

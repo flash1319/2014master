@@ -40,6 +40,7 @@ public:
 	
 	float KinectLeftY();
 	float KinectRightY();
+	bool KinectGoalHot();
 };
 
 #endif
