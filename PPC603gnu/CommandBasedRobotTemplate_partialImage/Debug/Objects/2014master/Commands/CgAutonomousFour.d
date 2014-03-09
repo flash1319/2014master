@@ -406,6 +406,7 @@
   C:/WindRiver/GitHub/2014master/Commands/CmdFunnelsDeploy.h \
   C:/WindRiver/GitHub/2014master/Commands/CmdShooterLatch.h \
   C:/WindRiver/GitHub/2014master/Commands/CmdShooterUnlatchAutonomous.h \
+  C:/WindRiver/GitHub/2014master/Commands/CgRetractAppendages.h \
   C:/WindRiver/GitHub/2014master/Commands/CmdShooterMotorsEngage.h \
   C:/WindRiver/GitHub/2014master/Commands/CmdShooterMotorsDisengage.h \
   C:/WindRiver/GitHub/2014master/Commands/CmdShooterReverse.h \
@@ -1235,6 +1236,8 @@ C:/WindRiver/GitHub/2014master/Commands/CmdFunnelsDeploy.h:
 C:/WindRiver/GitHub/2014master/Commands/CmdShooterLatch.h:
 
 C:/WindRiver/GitHub/2014master/Commands/CmdShooterUnlatchAutonomous.h:
+
+C:/WindRiver/GitHub/2014master/Commands/CgRetractAppendages.h:
 
 C:/WindRiver/GitHub/2014master/Commands/CmdShooterMotorsEngage.h:
 
