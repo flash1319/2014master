@@ -16,7 +16,6 @@ Drive::Drive() : Subsystem("Drive") {
 	m_driveTwo = new RobotDrive(m_leftThree, m_rightThree);
 	
 	m_solGear = new DoubleSolenoid(SOL_GEAR_SHIFT_MODULE, SOL_GEAR_SHIFT_A, SOL_GEAR_SHIFT_B);
-	m_solBrake = new Solenoid(SOL_BRAKE_PAD_MODULE, SOL_BRAKE_PAD);
 	
 	m_leftEncoder = new Encoder(GPIO_LEFT_ENCODER_A, GPIO_LEFT_ENCODER_B, false);
 	m_rightEncoder = new Encoder(GPIO_RIGHT_ENCODER_A, GPIO_RIGHT_ENCODER_B, false);
@@ -65,10 +64,6 @@ float Drive::DistanceRight() {
 	return (float)(m_rightEncoder->GetDistance());
 }
 
-bool Drive::BrakeDeployed() {
-	return m_solBrake->Get();
-}
-
 bool Drive::LoaderFront() {
 	return m_loaderFront;
 }
@@ -106,20 +101,13 @@ void Drive::JoystickArcadeDrive(float speed, float rotate) {
 
 void Drive::JoystickTankDrive(float speedLeft, float speedRight) {
 	if(m_loaderFront) {
-		m_driveOne->TankDrive(speedLeft, speedRight, false);
-		m_driveTwo->TankDrive(speedLeft, speedRight, false);
+		m_driveOne->TankDrive(speedRight, speedLeft, false);
+		m_driveTwo->TankDrive(speedRight, speedLeft, false);
 	}
 	else {
-		m_driveOne->TankDrive(-speedRight, -speedLeft, false);
-		m_driveTwo->TankDrive(-speedRight, -speedLeft, false);
+		m_driveOne->TankDrive(-speedLeft, -speedRight, false);
+		m_driveTwo->TankDrive(-speedLeft, -speedRight, false);
 	}
-}
-
-void Drive::Brake(bool deploy) {
-	if (deploy == true) {
-		Stop();
-	}
-	m_solBrake->Set(deploy);
 }
 
 void Drive::SetFront(bool loaderFront) {

@@ -4,6 +4,9 @@
 #include "CmdFunnelsDeployAndWait.h"
 #include "CmdShooterLatch.h"
 #include "CmdShooterUnlatch.h"
+#include "CmdFunnelsUndeploy.h"
+#include "CmdLoaderRetract.h"
+#include "CgRetractAppendages.h"
 #include "CmdShooterMotorsEngage.h"
 #include "CmdShooterMotorsDisengage.h"
 #include "CmdShooterReverse.h"
@@ -30,6 +33,7 @@ CgShooterShoot::CgShooterShoot() {
 	AddSequential(new CmdWait(SHOOTER_SHOOT_TIME));
 	
 	//The motors engage and the shooter readies itself for the next shot
+	AddParallel(new CgRetractAppendages());
 	AddSequential(new CmdShooterMotorsEngage());
 	AddSequential(new CmdShooterSlowPull());
 	AddSequential(new CmdWaitForShooterEngage());

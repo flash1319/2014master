@@ -246,12 +246,12 @@
     <buildtargets>
         <buildtarget buildtool="Linker" name="CommandBasedRobotTemplate" passed="false" targetname="CommandBasedRobotTemplate">
             <contents>
-                <buildtargetreference name="/2014master/CommandBasedRobotTemplate_partialImage"/>
+                <buildtargetreference name="/R2014_SCOTT_BOT/CommandBasedRobotTemplate_partialImage"/>
             </contents>
         </buildtarget>
         <buildtarget buildtool="Partial Image Linker" name="CommandBasedRobotTemplate_partialImage" passed="true" targetname="CommandBasedRobotTemplate_partialImage">
             <contents>
-                <folder name="/2014master" recursive="true"/>
+                <folder name="/R2014_SCOTT_BOT" recursive="true"/>
             </contents>
         </buildtarget>
     </buildtargets>

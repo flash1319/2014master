@@ -4,6 +4,7 @@
 #include "CmdFunnelsDeploy.h"
 #include "CmdShooterLatch.h"
 #include "CmdShooterUnlatch.h"
+#include "CgRetractAppendages.h"
 #include "CmdShooterMotorsEngage.h"
 #include "CmdShooterMotorsDisengage.h"
 #include "CmdShooterReverse.h"
@@ -41,6 +42,7 @@ CgAutonomousThree::CgAutonomousThree() {
 	AddParallel(new CmdDriveProgrammed(AUTONOMOUS_SPEED, AUTONOMOUS_SPEED, AUTONOMOUS_DRIVE_TIME));
 	
 	//Shooter motors pull back the catapult and it is readied to be fired in tele-op
+	AddParallel(new CgRetractAppendages());;
 	AddSequential(new CmdShooterMotorsEngage());
 	AddSequential(new CmdShooterSlowPull());
 	AddSequential(new CmdWaitForShooterEngage());

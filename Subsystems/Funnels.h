@@ -11,7 +11,9 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	
-	DoubleSolenoid *m_solFunnels;
+//	DoubleSolenoid *m_solFunnels;
+	Relay *m_tempRelayFunnelsA, *m_tempRelayFunnelsB;
+	
 public:
 	Funnels();
 	void InitDefaultCommand();

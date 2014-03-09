@@ -108,14 +108,14 @@ private:
 		SmartDashboard::PutNumber("Right Speed", CommandBase::drive->SpeedRight());
 		SmartDashboard::PutNumber("Left Distance", CommandBase::drive->DistanceLeft());
 		SmartDashboard::PutNumber("Right Distance", CommandBase::drive->DistanceRight());
-		SmartDashboard::PutBoolean("Brake Deployed", CommandBase::drive->BrakeDeployed());
+//		SmartDashboard::PutBoolean("Brake Deployed", CommandBase::drive->BrakeDeployed());
 		SmartDashboard::PutBoolean("Line Ball In", CommandBase::shooter->LineBallIn());
 		SmartDashboard::PutBoolean("Funnels Deployed", CommandBase::funnels->FunnelsDeployed());
 		SmartDashboard::PutBoolean("Intake Running", CommandBase::loader->IntakeRunning());
 		SmartDashboard::PutBoolean("Intake Extended", CommandBase::loader->IntakeExtended());
 		SmartDashboard::PutBoolean("Ball In Proximity", CommandBase::loader->BallProximity());
 		SmartDashboard::PutBoolean("Shooter Latched", CommandBase::shooter->Latched());
-		SmartDashboard::PutBoolean("Shooter Motors Engaged", CommandBase::shooter->MotorsEngaged());
+		SmartDashboard::PutBoolean("Shooter Motor Engaged", CommandBase::shooter->MotorEngaged());
 		SmartDashboard::PutString("Shot Length", CommandBase::shooter->HardStopEngaged() ? "Long Shot" : "Short Shot");
 		SmartDashboard::PutBoolean("Shooter Fully Retracted", CommandBase::shooter->FullyRetracted());
 		SmartDashboard::PutBoolean("Shooter Latched Limit", CommandBase::shooter->LatchedSwitch());
@@ -126,6 +126,8 @@ private:
 //		SmartDashboard::PutNumber("Acceleration X", CommandBase::drive->GetAccelX());
 //		SmartDashboard::PutNumber("Acceleration Y", CommandBase::drive->GetAccelY());
 		SmartDashboard::PutBoolean("Recording Telemetry", CommandBase::telemetry->RecordingTelemetry());
+		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
+		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
 	}
 	
 	void UpdateTelemetry() {
@@ -158,8 +160,33 @@ private:
 	
 	void UpdateDisplay() {
 		disp_batteryVoltage->setData(DriverStation::GetInstance()->GetBatteryVoltage());
-		char temp[6];
-		sprintf(temp, "%d%s", pneumatics->GetPressure(), "psi");
+		int pressure = pneumatics->GetPressure();
+		char temp[10];
+		string emoticon = "";
+		
+		if(pressure >= 106) {
+			emoticon = "=D";
+		}
+		else if(pressure >= 89) {
+			emoticon = "=)";
+		}
+		else if(pressure >= 72) {
+			emoticon = ":)";
+		}
+		else if(pressure >= 55) {
+			emoticon = ":|";
+		}
+		else if(pressure >= 38) {
+			emoticon = ":(";
+		}
+		else if(pressure >= 20) {
+			emoticon = "=(";
+		}
+		else {
+			emoticon = "D=";
+		}
+		
+		sprintf(temp, "%d%s%s", pressure, "psi", emoticon.c_str());
 		disp_pressureSensor->setData(temp);
 	}
 };

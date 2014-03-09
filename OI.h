@@ -10,6 +10,8 @@ private:
 	
 	JoystickButton *m_shooterSafetyOverrideButton;
 	
+	KinectStick *m_leftArm, *m_rightArm;
+	
 	bool m_driveZLast, m_driveZCurrent;
 	
 #define BUTTON_SETUP(btn_name, pad, btn_code, action, cmd, arg) \
@@ -35,6 +37,9 @@ public:
 	float operateZ();
 	
 	static float scaleAxis(float input);
+	
+	float KinectLeftY();
+	float KinectRightY();
 };
 
 #endif

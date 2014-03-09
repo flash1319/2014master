@@ -77,9 +77,7 @@ void _GLOBAL__I__ZN18CmdShooterPullBackC2Ev();
 
 void _GLOBAL__I__ZN18CmdShooterSlowPullC2Ev();
 
-void _GLOBAL__I__ZN19CmdDriveBrakeEngageC2Ev();
-
-void _GLOBAL__I__ZN19CmdDriveBrakeToggleC2Ev();
+void _GLOBAL__I__ZN19CgRetractAppendagesC2Ev();
 
 void _GLOBAL__I__ZN19CmdDriveShiftToggleC2Ev();
 
@@ -94,8 +92,6 @@ void _GLOBAL__I__ZN21CmdLoaderIntakeToggleC2Ev();
 void _GLOBAL__I__ZN21CmdShooterLatchToggleC2Ev();
 
 void _GLOBAL__I__ZN21CmdShooterReverseHeldC2Ev();
-
-void _GLOBAL__I__ZN22CmdDriveBrakeDisengageC2Ev();
 
 void _GLOBAL__I__ZN22CmdLoaderExtendAndWaitC2Ev();
 
@@ -249,8 +245,7 @@ void (*_ctors[])() =
     _GLOBAL__I__ZN18CmdFunnelsUndeployC2Ev,
     _GLOBAL__I__ZN18CmdShooterPullBackC2Ev,
     _GLOBAL__I__ZN18CmdShooterSlowPullC2Ev,
-    _GLOBAL__I__ZN19CmdDriveBrakeEngageC2Ev,
-    _GLOBAL__I__ZN19CmdDriveBrakeToggleC2Ev,
+    _GLOBAL__I__ZN19CgRetractAppendagesC2Ev,
     _GLOBAL__I__ZN19CmdDriveShiftToggleC2Ev,
     _GLOBAL__I__ZN19CmdDriveToggleFrontC2Ev,
     _GLOBAL__I__ZN20CmdLoaderUnjamToggleC2Ev,
@@ -258,7 +253,6 @@ void (*_ctors[])() =
     _GLOBAL__I__ZN21CmdLoaderIntakeToggleC2Ev,
     _GLOBAL__I__ZN21CmdShooterLatchToggleC2Ev,
     _GLOBAL__I__ZN21CmdShooterReverseHeldC2Ev,
-    _GLOBAL__I__ZN22CmdDriveBrakeDisengageC2Ev,
     _GLOBAL__I__ZN22CmdLoaderExtendAndWaitC2Ev,
     _GLOBAL__I__ZN22CmdLoaderLoadingExtendC2Ev,
     _GLOBAL__I__ZN22CmdShooterMotorsEngageC2Ev,
@@ -389,9 +383,7 @@ void _GLOBAL__D__ZN18CmdShooterPullBackC2Ev();
 
 void _GLOBAL__D__ZN18CmdShooterSlowPullC2Ev();
 
-void _GLOBAL__D__ZN19CmdDriveBrakeEngageC2Ev();
-
-void _GLOBAL__D__ZN19CmdDriveBrakeToggleC2Ev();
+void _GLOBAL__D__ZN19CgRetractAppendagesC2Ev();
 
 void _GLOBAL__D__ZN19CmdDriveShiftToggleC2Ev();
 
@@ -406,8 +398,6 @@ void _GLOBAL__D__ZN21CmdLoaderIntakeToggleC2Ev();
 void _GLOBAL__D__ZN21CmdShooterLatchToggleC2Ev();
 
 void _GLOBAL__D__ZN21CmdShooterReverseHeldC2Ev();
-
-void _GLOBAL__D__ZN22CmdDriveBrakeDisengageC2Ev();
 
 void _GLOBAL__D__ZN22CmdLoaderExtendAndWaitC2Ev();
 
@@ -547,8 +537,7 @@ void (*_dtors[])() =
     _GLOBAL__D__ZN18CmdFunnelsUndeployC2Ev,
     _GLOBAL__D__ZN18CmdShooterPullBackC2Ev,
     _GLOBAL__D__ZN18CmdShooterSlowPullC2Ev,
-    _GLOBAL__D__ZN19CmdDriveBrakeEngageC2Ev,
-    _GLOBAL__D__ZN19CmdDriveBrakeToggleC2Ev,
+    _GLOBAL__D__ZN19CgRetractAppendagesC2Ev,
     _GLOBAL__D__ZN19CmdDriveShiftToggleC2Ev,
     _GLOBAL__D__ZN19CmdDriveToggleFrontC2Ev,
     _GLOBAL__D__ZN20CmdLoaderUnjamToggleC2Ev,
@@ -556,7 +545,6 @@ void (*_dtors[])() =
     _GLOBAL__D__ZN21CmdLoaderIntakeToggleC2Ev,
     _GLOBAL__D__ZN21CmdShooterLatchToggleC2Ev,
     _GLOBAL__D__ZN21CmdShooterReverseHeldC2Ev,
-    _GLOBAL__D__ZN22CmdDriveBrakeDisengageC2Ev,
     _GLOBAL__D__ZN22CmdLoaderExtendAndWaitC2Ev,
     _GLOBAL__D__ZN22CmdLoaderLoadingExtendC2Ev,
     _GLOBAL__D__ZN22CmdShooterMotorsEngageC2Ev,

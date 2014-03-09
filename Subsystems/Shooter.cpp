@@ -3,9 +3,8 @@
 #include "../Utilities.h"
 
 Shooter::Shooter() : Subsystem("Shooter") {
-	m_shooterMotorOne = new Victor(PWM_SHOOTER_PULLBACK_ONE);
-	m_shooterMotorTwo = new Victor(PWM_SHOOTER_PULLBACK_TWO);
-	m_solLatch = new Solenoid(SOL_SHOOTER_LATCH_MODULE, SOL_SHOOTER_LATCH);
+	m_shooterMotor = new Victor(PWM_SHOOTER_PULLBACK);
+//	m_solLatch = new Solenoid(SOL_SHOOTER_LATCH_MODULE, SOL_SHOOTER_LATCH);
 	m_solEngage = new DoubleSolenoid(SOL_SHOOTER_ENGAGE_MODULE, SOL_SHOOTER_ENGAGE_A, SOL_SHOOTER_ENGAGE_B);
 	m_solHardStop = new DoubleSolenoid(SOL_HARD_STOP_MODULE, SOL_HARD_STOP_A, SOL_HARD_STOP_B);
 	m_retractedSwitch = new DigitalInput(GPIO_SHOOTER_RETRACTED_LIMIT);
@@ -17,27 +16,29 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	m_cameraLED = new Relay(RELAY_CAMERA_LED);
 	m_bling = new Relay(RELAY_BLING);
 	
+	m_tempRelayLatch = new Relay(RELAY_TEMP_LATCH);
+	
 	m_shooterOverridden = false;
 	
 	SetHardStop(true);
 	
-	m_shooterMotorOne->SetSafetyEnabled(SAFETY_ENABLED);
-	m_shooterMotorTwo->SetSafetyEnabled(SAFETY_ENABLED);
+	m_shooterMotor->SetSafetyEnabled(SAFETY_ENABLED);
 }
     
 void Shooter::InitDefaultCommand() {
 	
 }
 
-bool Shooter::MotorsRunning() {
-	return !InTolerance(m_shooterMotorOne->Get(), 0., MOTOR_STOPPED_TOLERANCE)||!InTolerance(m_shooterMotorTwo->Get(), 0., MOTOR_STOPPED_TOLERANCE);
+bool Shooter::MotorRunning() {
+	return !InTolerance(m_shooterMotor->Get(), 0., MOTOR_STOPPED_TOLERANCE);
 }
 
 bool Shooter::Latched() {
-	return !m_solLatch->Get();
+//	return !m_solLatch->Get();
+	return m_tempRelayLatch->Get() == Relay::kForward;
 }
 
-bool Shooter::MotorsEngaged() {
+bool Shooter::MotorEngaged() {
 	return m_solEngage->Get() == DoubleSolenoid::kReverse;
 }
 
@@ -74,16 +75,16 @@ float Shooter::GetDistance() {
 }
 
 bool Shooter::CameraLit() {
-	return m_cameraLED->Get() == Relay::kForward ? true : false;
+	return m_cameraLED->Get() == Relay::kForward;
 }
 
 void Shooter::RunCatapult(float speed) {
-	m_shooterMotorOne->Set(-speed);
-	m_shooterMotorTwo->Set(-speed);
+	m_shooterMotor->Set(-speed);
 }
 
 void Shooter::LatchSolenoid(bool latch) {
-	m_solLatch->Set(!latch);
+//	m_solLatch->Set(!latch);
+	m_tempRelayLatch->Set(latch ? Relay::kForward : Relay::kReverse);
 }
 
 void Shooter::SetClutch(bool clutch) {

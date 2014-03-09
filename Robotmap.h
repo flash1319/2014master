@@ -19,8 +19,7 @@ const UINT32 PWM_RIGHT_ONE						= 4;
 const UINT32 PWM_RIGHT_TWO						= 5;
 const UINT32 PWM_RIGHT_THREE					= 6;
 const UINT32 PWM_BALL_PICKUP_WHEEL				= 7;	//Chuck's Victor 7 on practice
-const UINT32 PWM_SHOOTER_PULLBACK_ONE			= 8;	//Chuck's Victor 3 on practice
-const UINT32 PWM_SHOOTER_PULLBACK_TWO			= 9;	//todo: do away with this
+const UINT32 PWM_SHOOTER_PULLBACK				= 8;	//Chuck's Victor 3 on practice
 
 const UINT32 GPIO_RIGHT_ENCODER_A				= 1;
 const UINT32 GPIO_RIGHT_ENCODER_B				= 2;
@@ -39,7 +38,6 @@ const UINT32 SOL_BALL_PICKUP_DEPLOY_MODULE		= 1;
 const UINT32 SOL_SHOOTER_ENGAGE_MODULE			= 1;
 const UINT32 SOL_HARD_STOP_MODULE				= 1;
 const UINT32 SOL_FUNNEL_DEPLOY_MODULE			= 2;
-const UINT32 SOL_BRAKE_PAD_MODULE				= 2;
 const UINT32 SOL_SHOOTER_LATCH_MODULE			= 2;
 
 const UINT32 SOL_GEAR_SHIFT_A					= 1;
@@ -52,7 +50,6 @@ const UINT32 SOL_HARD_STOP_A					= 7;
 const UINT32 SOL_HARD_STOP_B					= 8;
 const UINT32 SOL_FUNNEL_DEPLOY_A				= 1;
 const UINT32 SOL_FUNNEL_DEPLOY_B				= 2;
-const UINT32 SOL_BRAKE_PAD						= 3;
 const UINT32 SOL_SHOOTER_LATCH					= 4;
 
 const UINT32 RELAY_COMPRESSOR					= 1;
@@ -77,7 +74,7 @@ const float AUTONOMOUS_SPEED					= 0.7;
 
 const float LOADER_MOTOR_SPEED					= 1.0;
 const float LOADER_MOTOR_REVERSE_SPEED			= -1.0;
-const float LOADER_EXTENSION_TIME				= .5;
+const float LOADER_EXTENSION_TIME				= 0.5;
 const float LOADER_PULL_BALL_TIME				= 1.0;
 const float AUTONOMOUS_LOAD_TIME				= 2.0;			//Todo: Set this to a reasonable amount
 const float LOADER_RUN_AFTER_RETRACT			= 0.0;

@@ -8,21 +8,21 @@
  */
 class Shooter: public Subsystem {
 private:
-	Victor *m_shooterMotorOne, *m_shooterMotorTwo;
-	Solenoid *m_solLatch;
+	Victor *m_shooterMotor;
+//	Solenoid *m_solLatch;
 	DoubleSolenoid *m_solEngage, *m_solHardStop;
 	DigitalInput *m_retractedSwitch, *m_latchSwitch, *m_gearBoxSwitch, *m_ballInSwitch, *m_lineBallIn;
 	AnalogChannel *m_rangeFinder;
-	Relay *m_cameraLED, *m_bling;
+	Relay *m_cameraLED, *m_bling, *m_tempRelayLatch;
 	
 	bool m_shooterOverridden;
 public:
 	Shooter();
 	void InitDefaultCommand();
 	
-	bool MotorsRunning();			//Returns true if the motors are running else false if stopped
+	bool MotorRunning();			//Returns true if the motors are running else false if stopped
 	bool Latched();					//Returns true if the solenoid for the latch is set to engaged else false
-	bool MotorsEngaged();			//Returns true if the gear box solenoid is set to be engaged else false
+	bool MotorEngaged();			//Returns true if the gear box solenoid is set to be engaged else false
 	bool HardStopEngaged();			//Returns true if the hard stop is engaged else false
 	bool FullyRetracted();			//Returns true if the arm is retracted enough to latch else false
 	bool LatchedSwitch();			//Returns true if the catapult is latched as told by the switch else false

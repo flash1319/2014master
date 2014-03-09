@@ -10,6 +10,9 @@ OI::OI() {
 	m_driverPad = new Joystick(PAD_DRIVER);
 	m_operatorPad = new Joystick(PAD_OPERATOR);
 	
+	m_leftArm = new KinectStick(1);
+	m_rightArm = new KinectStick(2);
+	
 	m_driveZLast = false;
 	m_driveZCurrent = false;
 	
@@ -83,4 +86,12 @@ float OI::scaleAxis(float input) {
 	}
 	
 	return (pow(y, filteredInput) - 1) / k * Sign(input);
+}
+
+float OI::KinectLeftY(){
+	return m_leftArm->GetY();
+}
+
+float OI::KinectRightY(){
+	return m_rightArm->GetY();
 }

@@ -14,7 +14,7 @@ void CmdShooterMotorsToggle::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void CmdShooterMotorsToggle::Execute() {
-	if(shooter->MotorsEngaged() == true) {
+	if(shooter->MotorEngaged() == true) {
 		c = new CmdShooterMotorsDisengage();
 	}
 	else {
