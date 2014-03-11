@@ -66,7 +66,7 @@ const UINT32 ANALOG_DRIVE_GYRO					= 3;
 
 const UINT32 DRIVE_ACCELEROMETER_MODULE			= 1;
 
-const float DRV_DIST_PER_PULSE					= 1.;			//Todo: Change this to the correct value
+const float DRV_DIST_PER_PULSE					= 1.0;			//Todo: Change this to the correct value
 const float AUTONOMOUS_DRIVE_BASE_SPEED			= 0.5;  		//Todo: Tweak this and the P constant to run smoothly
 const float AUTONOMOUS_DRIVE_P_CONSTANT			= 0.05;
 const float AUTONOMOUS_DRIVE_TIME				= 0.5;			//Todo: Set this to a reasonable time
