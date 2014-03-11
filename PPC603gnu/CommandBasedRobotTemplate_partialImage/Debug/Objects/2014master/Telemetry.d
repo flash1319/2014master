@@ -1,7 +1,7 @@
  \
  CommandBasedRobotTemplate_partialImage/Debug/Objects/2014master/Telemetry.o:  \
- C:/WindRiver/GitHub/2014master/Telemetry.cpp \
-  C:/WindRiver/GitHub/2014master/Telemetry.h \
+ C:/Users/Joshua/Documents/GitHub/2014master/Telemetry.cpp \
+  C:/Users/Joshua/Documents/GitHub/2014master/Telemetry.h \
   C:/WindRiver/vxworks-6.3/target/h/stdio.h \
   C:/WindRiver/vxworks-6.3/target/h/types/vxANSI.h \
   C:/WindRiver/vxworks-6.3/target/h/types/vxCpu.h \
@@ -387,7 +387,7 @@
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h
 
-C:/WindRiver/GitHub/2014master/Telemetry.h:
+C:/Users/Joshua/Documents/GitHub/2014master/Telemetry.h:
 
 C:/WindRiver/vxworks-6.3/target/h/stdio.h:
 

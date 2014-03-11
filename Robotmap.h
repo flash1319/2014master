@@ -86,7 +86,7 @@ const float PNEUMATICS_PRESSURE_VOLTAGE_B		= 1.008;
 const float PNEUMATICS_PRESSURE_VOLTAGE_M		= 63.344;
 
 const float SHOOTER_MOTOR_SPEED					= 0.75;			//Todo: Set to a good amount
-const float SHOOTER_MOTOR_REVERSE_SPEED			= -0.25;
+const float SHOOTER_MOTOR_REVERSE_SPEED			= -0.8;			//Todo: Flip Reverse and pullback
 const float SHOOTER_MOTOR_DISENGAGE_SPEED		= 0.25;
 const float SHOOTER_PULLBACK_SLOW_SPEED			= 0.45;
 const float SHOOTER_PULLBACK_LONG_BEFORE_SLOW	= 2.9;

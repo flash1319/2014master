@@ -1,6 +1,6 @@
  \
  CommandBasedRobotTemplate_partialImage/Debug/Objects/2014master/InsightLT/InsightLT.o:  \
- C:/WindRiver/GitHub/2014master/InsightLT/InsightLT.cpp \
+ C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/InsightLT.cpp \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPILib.h \
   C:/WindRiver/vxworks-6.3/target/h/string.h \
   C:/WindRiver/vxworks-6.3/target/h/types/vxANSI.h \
@@ -384,17 +384,17 @@
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/HSLImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h \
-  C:/WindRiver/GitHub/2014master/InsightLT/InsightLT.h \
+  C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/InsightLT.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/DigitalModule.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Task.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/I2C.h \
-  C:/WindRiver/GitHub/2014master/InsightLT/Zone.h \
-  C:/WindRiver/GitHub/2014master/InsightLT/Line.h \
-  C:/WindRiver/GitHub/2014master/InsightLT/StringData.h \
+  C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/Zone.h \
+  C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/Line.h \
+  C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/StringData.h \
   c:/windriver/gnu/3.4.4-vxworks-6.3/x86-win32/lib/gcc/../../../x86-win32/include/c++/3.4.4/iomanip \
-  C:/WindRiver/GitHub/2014master/InsightLT/DisplayData.h \
-  C:/WindRiver/GitHub/2014master/InsightLT/IntegerData.h \
-  C:/WindRiver/GitHub/2014master/InsightLT/DecimalData.h
+  C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/DisplayData.h \
+  C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/IntegerData.h \
+  C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/DecimalData.h
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/WPILib.h:
 
@@ -1162,7 +1162,7 @@ C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h:
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h:
 
-C:/WindRiver/GitHub/2014master/InsightLT/InsightLT.h:
+C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/InsightLT.h:
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/DigitalModule.h:
 
@@ -1170,16 +1170,16 @@ C:/WindRiver/vxworks-6.3/target/h/WPILib/Task.h:
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/I2C.h:
 
-C:/WindRiver/GitHub/2014master/InsightLT/Zone.h:
+C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/Zone.h:
 
-C:/WindRiver/GitHub/2014master/InsightLT/Line.h:
+C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/Line.h:
 
-C:/WindRiver/GitHub/2014master/InsightLT/StringData.h:
+C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/StringData.h:
 
 c:/windriver/gnu/3.4.4-vxworks-6.3/x86-win32/lib/gcc/../../../x86-win32/include/c++/3.4.4/iomanip:
 
-C:/WindRiver/GitHub/2014master/InsightLT/DisplayData.h:
+C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/DisplayData.h:
 
-C:/WindRiver/GitHub/2014master/InsightLT/IntegerData.h:
+C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/IntegerData.h:
 
-C:/WindRiver/GitHub/2014master/InsightLT/DecimalData.h:
+C:/Users/Joshua/Documents/GitHub/2014master/InsightLT/DecimalData.h:
