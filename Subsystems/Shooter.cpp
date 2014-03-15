@@ -59,7 +59,7 @@ bool Shooter::GearSwitchEngaged() {
 }
 
 bool Shooter::BallInside() {
-	return !m_ballInSwitch->Get();
+	return m_ballInSwitch->Get();
 }
 
 bool Shooter::LineBallIn() {

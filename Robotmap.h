@@ -25,11 +25,11 @@ const UINT32 GPIO_RIGHT_ENCODER_A				= 1;
 const UINT32 GPIO_RIGHT_ENCODER_B				= 2;
 const UINT32 GPIO_LEFT_ENCODER_A				= 3;
 const UINT32 GPIO_LEFT_ENCODER_B				= 4;
-const UINT32 GPIO_BALL_IN_SWITCH				= 5;
+const UINT32 GPIO_BALL_IN_SWITCH				= 5;	//Port for physical button switch in ring
 const UINT32 GPIO_SHOOTER_RETRACTED_LIMIT		= 6;
-const UINT32 GPIO_BALL_PROXIMITY_SWITCH			= 7;
+const UINT32 GPIO_BALL_PROXIMITY_SWITCH			= 7;	//Port for ball line sensor on loader
 const UINT32 GPIO_LATCHED_SWITCH				= 8;
-const UINT32 GPIO_LINE_BALL_IN					= 9;
+const UINT32 GPIO_LINE_BALL_IN					= 9;	//Port for ball line sensor in ring
 const UINT32 GPIO_SHOOTER_GEAR_ENGAGED			= 10;
 const UINT32 GPIO_PRESSURE						= 14;
 

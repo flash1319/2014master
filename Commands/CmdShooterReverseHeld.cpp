@@ -14,7 +14,10 @@ void CmdShooterReverseHeld::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void CmdShooterReverseHeld::Execute() {
-	shooter->RunCatapult(SHOOTER_MOTOR_REVERSE_SPEED);	
+		float speed = (DriverStation::GetInstance()->GetAnalogIn(1) - 2.5) / 2.5;
+		shooter->RunCatapult(speed);
+	//	shooter->RunCatapult(SHOOTER_MOTOR_REVERSE_SPEED);
+//	shooter->RunCatapult(-0.5);	
 }
 
 // Make this return true when this Command no longer needs to run execute()

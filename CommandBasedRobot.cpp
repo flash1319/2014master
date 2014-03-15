@@ -44,6 +44,8 @@ private:
 		SmartDashboard::PutData("Toggle Drive Mode", new CmdDriveChangeMode());
 		SmartDashboard::PutData("Start Recording Telemetry", new CmdTelemetryRecordStart());
 		SmartDashboard::PutData("Stop Recording Telemetry", new CmdTelemetryRecordStop());
+		
+		printf("Robot initialized.\n");
 	}
 	
 	virtual void AutonomousInit() {
@@ -67,6 +69,8 @@ private:
 			autonomousCommand->Cancel();
 		}
 //		CommandBase::shooter->SetCameraLED(true);
+		
+		printf("Teleop mode initialized.\n");
 	}
 	
 	virtual void TeleopPeriodic() {
@@ -88,7 +92,7 @@ private:
 	}
 	\
 	virtual void DisabledInit() {
-		
+		printf("Disabled mode initialized.\n");
 	}
 	
 	virtual void DisabledPeriodic() {
@@ -130,7 +134,8 @@ private:
 		SmartDashboard::PutBoolean("Recording Telemetry", CommandBase::telemetry->RecordingTelemetry());
 		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
 		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
-		SmartDashboard::PutNumber("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());
+//		SmartDashboard::PutBoolean("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());
+		SmartDashboard::PutNumber("Reverse Motor Speed", (DriverStation::GetInstance()->GetAnalogIn(1) - 2.5) / 2.5);
 	}
 	
 	void UpdateTelemetry() {
