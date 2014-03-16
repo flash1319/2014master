@@ -18,12 +18,12 @@ void Funnels::InitDefaultCommand() {
 bool Funnels::FunnelsDeployed() {
 //	return m_solFunnels->Get() == DoubleSolenoid::kReverse;
 	
-	return m_tempRelayFunnelsA->Get() == Relay::kForward && m_tempRelayFunnelsB->Get() == Relay::kReverse;
+	return m_tempRelayFunnelsA->Get() == Relay::kReverse && m_tempRelayFunnelsB->Get() == Relay::kForward;
 }
 	
 void Funnels::DeployFunnels(bool deploy) {
 //	m_solFunnels->Set(deploy ? DoubleSolenoid::kReverse : DoubleSolenoid::kForward);
 
-	m_tempRelayFunnelsA->Set(deploy ? Relay::kForward : Relay::kReverse);
-	m_tempRelayFunnelsB->Set(deploy ? Relay::kReverse : Relay::kForward);
+	m_tempRelayFunnelsA->Set(deploy ? Relay::kReverse : Relay::kForward);
+	m_tempRelayFunnelsB->Set(deploy ? Relay::kForward : Relay::kReverse);
 }

@@ -35,11 +35,11 @@ bool Shooter::MotorRunning() {
 
 bool Shooter::Latched() {
 //	return !m_solLatch->Get();
-	return m_tempRelayLatch->Get() == Relay::kForward;
+	return m_tempRelayLatch->Get() == Relay::kReverse;
 }
 
 bool Shooter::MotorEngaged() {
-	return m_solEngage->Get() == DoubleSolenoid::kReverse;
+	return m_solEngage->Get() == DoubleSolenoid::kForward;
 }
 
 bool Shooter::HardStopEngaged() {
@@ -84,11 +84,11 @@ void Shooter::RunCatapult(float speed) {
 
 void Shooter::LatchSolenoid(bool latch) {
 //	m_solLatch->Set(!latch);
-	m_tempRelayLatch->Set(latch ? Relay::kForward : Relay::kReverse);
+	m_tempRelayLatch->Set(latch ? Relay::kReverse : Relay::kForward);
 }
 
 void Shooter::SetClutch(bool clutch) {
-	m_solEngage->Set(clutch ? DoubleSolenoid::kReverse : DoubleSolenoid::kForward);
+	m_solEngage->Set(clutch ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
 }
 
 void Shooter::SetHardStop(bool engage) {

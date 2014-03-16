@@ -13,12 +13,14 @@
 #include "Commands/CmdShooterReverseHeld.h"
 #include "Commands/CmdShooterShoot.h"
 #include "Commands/CmdLoaderIntakeToggle.h"
+#include "Commands/CgShooterFullPullback.h"
 
 #else 
 //Driver Buttons:
 BUTTON_SETUP(m_driveShiftButton, m_driverPad, DRV_GEAR_SHIFT, WhenPressed, CmdDriveShiftToggle, )
 //BUTTON_SETUP(m_driveToggleFrontButton, m_driverPad, DRV_SWITCH_FRONT, WhenPressed, CmdDriveToggleFront, )
 BUTTON_SETUP(m_driverShooterShootButton, m_driverPad, DRV_SHOOT, WhenPressed, CmdShooterShoot, )
+BUTTON_SETUP(m_driverShooterPullback, m_driverPad, DRV_SHOOTER_PULLBACK, WhenPressed, CgShooterFullPullback, )
 
 //Operator Buttons:
 BUTTON_SETUP(m_operatorLoaderLoadingExtendButton, m_operatorPad, OPR_LOADER_LOADING_EXTEND, WhenPressed, CmdLoaderLoadingExtensionToggle, )
