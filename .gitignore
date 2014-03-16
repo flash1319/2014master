@@ -3,4 +3,4 @@
 ################
 
 PPC603gnu/**
-!PPC603gnu/CommandBasedRobotTemplate/Debug/CommandBasedRobotTemplate.out
+**/!CommandBasedRobotTemplate.out
