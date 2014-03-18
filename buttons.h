@@ -29,8 +29,8 @@ BUTTON_SETUP(m_operatorHardStopButton, m_operatorPad, OPR_HARD_STOP, WhenPressed
 BUTTON_SETUP(m_operatorLoaderExtendButton, m_operatorPad, OPR_LOADER_EXTEND, WhenPressed, CmdLoaderExtensionToggle, )
 BUTTON_SETUP(m_operatorLoaderRun, m_operatorPad, OPR_LOADER_RUN, WhenPressed, CmdLoaderIntakeToggle, )
 BUTTON_SETUP(m_operatorFunnelsButton, m_operatorPad, OPR_FUNNELS, WhenPressed, CmdFunnelsToggle, )
-BUTTON_SETUP(m_operatorLatchButton, m_operatorPad, OPR_LATCH, WhenPressed, CmdShooterLatchToggle, )
-BUTTON_SETUP(m_operatorShooterMotorsButton, m_operatorPad, OPR_ENGAGE_MOTORS, WhenPressed, CmdShooterMotorsToggle, )
-BUTTON_SETUP(m_operatorShooterPullBackButton, m_operatorPad, OPR_SHOOTER_PULL_BACK, WhenPressed, CmdShooterPullBack, )
-BUTTON_SETUP(m_operatorShooterReverseButton, m_operatorPad, OPR_SHOOTER_REVERSE, WhileHeld, CmdShooterReverseHeld, )
+//BUTTON_SETUP(m_operatorLatchButton, m_operatorPad, OPR_LATCH, WhenPressed, CmdShooterLatchToggle, )
+//BUTTON_SETUP(m_operatorShooterMotorsButton, m_operatorPad, OPR_ENGAGE_MOTORS, WhenPressed, CmdShooterMotorsToggle, )
+//BUTTON_SETUP(m_operatorShooterPullBackButton, m_operatorPad, OPR_SHOOTER_PULL_BACK, WhenPressed, CmdShooterPullBack, )
+//BUTTON_SETUP(m_operatorShooterReverseButton, m_operatorPad, OPR_SHOOTER_REVERSE, WhileHeld, CmdShooterReverseHeld, )
 #endif

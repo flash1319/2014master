@@ -25,7 +25,7 @@ void CmdShooterShoot::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool CmdShooterShoot::IsFinished() {
-	return cg == NULL ? true : !cg->IsRunning();
+	return true;
 }
 
 // Called once after isFinished returns true

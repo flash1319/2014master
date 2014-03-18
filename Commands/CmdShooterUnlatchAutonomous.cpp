@@ -13,19 +13,19 @@ void CmdShooterUnlatchAutonomous::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void CmdShooterUnlatchAutonomous::Execute() {
-	if(shooter->LineBallIn()) {
-		shooter->LatchSolenoid(false);
-	}
+//	if(shooter->LineBallIn()) {
+//		shooter->LatchSolenoid(false);
+//	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool CmdShooterUnlatchAutonomous::IsFinished() {
-	return true;
+	return shooter->LineBallIn();
 }
 
 // Called once after isFinished returns true
 void CmdShooterUnlatchAutonomous::End() {
-	
+	shooter->LatchSolenoid(false);
 }
 
 // Called when another command which requires one or more of the same

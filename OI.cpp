@@ -97,5 +97,5 @@ float OI::KinectRightY() {
 }
 
 bool OI::KinectGoalHot() {
-	return KinectLeftY() > KINECT_HOT_GOAL_THRESHOLD && KinectRightY() > KINECT_HOT_GOAL_THRESHOLD;
+	return (KinectLeftY() >= KINECT_HOT_GOAL_THRESHOLD) && (KinectRightY() >= KINECT_HOT_GOAL_THRESHOLD);
 }
