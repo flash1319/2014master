@@ -16,6 +16,8 @@ OI::OI() {
 	m_driveZLast = false;
 	m_driveZCurrent = false;
 	
+	m_autoHotGoal = false;
+	
 #define BUTTON_SETUP(btn_name, pad, btn_code, action, cmd, arg) \
 	btn_name = new JoystickButton(pad, btn_code); \
 	btn_name->action(new cmd(arg));
@@ -98,4 +100,12 @@ float OI::KinectRightY() {
 
 bool OI::KinectGoalHot() {
 	return (KinectLeftY() >= KINECT_HOT_GOAL_THRESHOLD) && (KinectRightY() >= KINECT_HOT_GOAL_THRESHOLD);
+}
+
+void OI::AutonomousHotGoal(bool goalHot) {
+	m_autoHotGoal = goalHot;
+}
+
+bool OI::AutonomousHotGoal() {
+	return m_autoHotGoal;
 }

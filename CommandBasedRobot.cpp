@@ -41,7 +41,7 @@ private:
 		autoChooser->AddObject("Two Ball Auto", new CgAutonomousFour());
 		autoChooser->AddObject("No Ball Auto", new CgAutonomousFive());
 		autoChooser->AddObject("Kinect Hot Goal Auto", new CgAutonomousSix());
-		autoChooser->AddObject("New Two Ball Auto Test", new CgAutonomousSeven());
+		autoChooser->AddObject("Kinect Two Ball Auto", new CgAutonomousSeven());
 		SmartDashboard::PutData("Autonomous Mode:", autoChooser);
 		SmartDashboard::PutData("Toggle Drive Mode", new CmdDriveChangeMode());
 		SmartDashboard::PutData("Start Recording Telemetry", new CmdTelemetryRecordStart());
@@ -136,7 +136,7 @@ private:
 		SmartDashboard::PutBoolean("Recording Telemetry", CommandBase::telemetry->RecordingTelemetry());
 		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
 		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
-//		SmartDashboard::PutBoolean("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());
+		SmartDashboard::PutBoolean("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());
 		SmartDashboard::PutNumber("Reverse Motor Speed", (DriverStation::GetInstance()->GetAnalogIn(1) - 2.5) / 2.5);
 	}
 	

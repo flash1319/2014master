@@ -12,6 +12,7 @@
 #include "Commands/CmdShooterPullBack.h"
 #include "Commands/CmdShooterReverseHeld.h"
 #include "Commands/CmdShooterShoot.h"
+#include "Commands/CmdShooterShootPass.h"
 #include "Commands/CmdLoaderIntakeToggle.h"
 #include "Commands/CgShooterFullPullback.h"
 
@@ -20,6 +21,7 @@
 BUTTON_SETUP(m_driveShiftButton, m_driverPad, DRV_GEAR_SHIFT, WhenPressed, CmdDriveShiftToggle, )
 //BUTTON_SETUP(m_driveToggleFrontButton, m_driverPad, DRV_SWITCH_FRONT, WhenPressed, CmdDriveToggleFront, )
 BUTTON_SETUP(m_driverShooterShootButton, m_driverPad, DRV_SHOOT, WhenPressed, CmdShooterShoot, )
+BUTTON_SETUP(m_driverShooterShootPassButton, m_driverPad, DRV_SHOOT_PASS, WhenPressed, CmdShooterShootPass, )
 BUTTON_SETUP(m_driverShooterPullback, m_driverPad, DRV_SHOOTER_PULLBACK, WhenPressed, CgShooterFullPullback, )
 
 //Operator Buttons:

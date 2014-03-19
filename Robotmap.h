@@ -75,7 +75,7 @@ const float AUTONOMOUS_SPEED					= -0.7;
 const float LOADER_MOTOR_SPEED					= 1.0;
 const float LOADER_MOTOR_REVERSE_SPEED			= -1.0;
 const float LOADER_EXTENSION_TIME				= 0.5;
-const float LOADER_PULL_BALL_TIME				= 1.0;
+const float LOADER_PULL_BALL_TIME				= 0.5;
 const float AUTONOMOUS_LOAD_TIME				= 0.5;			//Todo: Set this to a reasonable amount
 const float LOADER_RUN_AFTER_RETRACT			= 0.0;
 const float LOADER_FUNNELS_DEPLOYMENT_WAIT_TIME = 0.5;
@@ -108,6 +108,12 @@ const float MOTOR_STOPPED_TOLERANCE				= 0.05;
 const float KINECT_HOT_GOAL_THRESHOLD			= 0.5;
 const float AUTONOMOUS_WAIT_AFTER_DEPLOYMENT	= HOT_GOAL_CHANGE_TIME - BALL_WAIT_FOR_SETTLE - LOADER_EXTENSION_TIME - LOADER_FUNNELS_DEPLOYMENT_WAIT_TIME;
 const float AUTONOMOUS_TIME_BEFORE_DRIVE		= 9.0;
+const float LOOK_FOR_KINECT_TIME				= 1.0;
+const float AUTONOMOUS_TURN_SPEED				= -0.7;
+const float AUTONOMOUS_TURN_TIME				= 0.5;
+const float AUTONOMOUS_TURN_TWO_LONG_SPEED		= -1.0;
+const float AUTONOMOUS_TURN_TWO_SHORT_SPEED		= -0.5;
+const float AUTONOMOUS_TURN_TWO_TIME			= 0.5;
 
 const bool SAFETY_ENABLED						= false;
 

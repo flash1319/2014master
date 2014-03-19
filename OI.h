@@ -12,7 +12,7 @@ private:
 	
 	KinectStick *m_leftArm, *m_rightArm;
 	
-	bool m_driveZLast, m_driveZCurrent;
+	bool m_driveZLast, m_driveZCurrent, m_autoHotGoal;
 	
 #define BUTTON_SETUP(btn_name, pad, btn_code, action, cmd, arg) \
 	JoystickButton *btn_name;
@@ -41,6 +41,9 @@ public:
 	float KinectLeftY();
 	float KinectRightY();
 	bool KinectGoalHot();
+	
+	void AutonomousHotGoal(bool goalHot);
+	bool AutonomousHotGoal();
 };
 
 #endif

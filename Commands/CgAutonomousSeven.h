@@ -4,7 +4,7 @@
 #include "Commands/CommandGroup.h"
 
 /**
- * @author Flash1319 - 2 ball autonomous test - pulls up ball and moves forward to shoot the two balls
+ * @author Flash1319 - Attempt at a 2 ball hot goal autonomous
  */
 class CgAutonomousSeven: public CommandGroup {
 public:	
