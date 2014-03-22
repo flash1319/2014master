@@ -100,14 +100,14 @@ void Drive::JoystickArcadeDrive(float speed, float rotate) {
 }
 
 void Drive::JoystickTankDrive(float speedLeft, float speedRight) {
-	if(m_loaderFront) {
+//	if(m_loaderFront) {
 		m_driveOne->TankDrive(speedRight, speedLeft, false);
 		m_driveTwo->TankDrive(speedRight, speedLeft, false);
-	}
-	else {
-		m_driveOne->TankDrive(-speedLeft, -speedRight, false);
-		m_driveTwo->TankDrive(-speedLeft, -speedRight, false);
-	}
+//	}
+//	else {
+//		m_driveOne->TankDrive(-speedLeft, -speedRight, false);
+//		m_driveTwo->TankDrive(-speedLeft, -speedRight, false);
+//	}
 }
 
 void Drive::SetFront(bool loaderFront) {

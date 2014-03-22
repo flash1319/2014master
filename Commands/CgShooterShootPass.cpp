@@ -24,7 +24,7 @@ CgShooterShootPass::CgShooterShootPass() {
 	
 	//Extends the loader and funnels if they are not yet deployed and waits for the ball to settle
 	AddSequential(new CmdShooterMotorsEngage());
-	AddSequential(new CmdLoaderExtendAndWait());
+//	AddSequential(new CmdLoaderExtendAndWait());
 	AddSequential(new CmdFunnelsDeployAndWait());
 	AddSequential(new CmdWait(BALL_WAIT_FOR_SETTLE));
 	

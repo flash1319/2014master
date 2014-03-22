@@ -28,11 +28,11 @@ private:
 		CommandBase::init();
 		autonomousCommand = NULL;
 		lw = LiveWindow::GetInstance();
-		
+
 		pneumatics = new Pneumatics();
 		pneumatics->Start();
 		
-		InitializeDisplay();
+//		InitializeDisplay();
 		
 		autoChooser = new SendableChooser();
 		autoChooser->AddDefault("One Ball Auto", new CgAutonomousOne());
@@ -88,7 +88,7 @@ private:
 		
 		UpdateSmartDashboard();
 		
-		UpdateDisplay();
+//		UpdateDisplay();
 		
 		CommandBase::shooter->UpdateBling();
 	}
@@ -99,7 +99,7 @@ private:
 	
 	virtual void DisabledPeriodic() {
 		UpdateSmartDashboard();
-		UpdateDisplay();
+//		UpdateDisplay();
 	}
 	
 	virtual void TestPeriodic() {

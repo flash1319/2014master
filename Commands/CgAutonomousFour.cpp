@@ -64,16 +64,15 @@ CgAutonomousFour::CgAutonomousFour() {
 	
 	//Loader and funnels deploy again and wait for the ball to settle
 	AddSequential(new CmdDriveProgrammed(AUTONOMOUS_SPEED, AUTONOMOUS_SPEED, AUTONOMOUS_DRIVE_TIME));	
-	AddSequential(new CmdWait(0.25));
-	AddSequential(new CmdLoaderExtend());
-	AddSequential(new CmdWait(LOADER_EXTENSION_TIME));
+	AddSequential(new CmdWait(0.5));
+//	AddSequential(new CmdLoaderExtend());
+//	AddSequential(new CmdWait(LOADER_EXTENSION_TIME));
 	AddSequential(new CmdWait(BALL_WAIT_FOR_SETTLE));
 	
 	//Shooter unlatches in order to shoot and robot drives forward
 	AddSequential(new CmdShooterUnlatchAutonomous());
 	AddSequential(new CmdWaitForUnlatch());
 	AddSequential(new CmdWait(SHOOTER_SHOOT_TIME));
-//	AddParallel(new CmdDriveProgrammed(AUTONOMOUS_SPEED, AUTONOMOUS_SPEED, AUTONOMOUS_DRIVE_TIME));	
 	
 	//Shooter motors pull back the catapult and it is readied to be fired in tele-op
 	AddParallel(new CgRetractAppendages());
