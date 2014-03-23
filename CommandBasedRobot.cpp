@@ -60,6 +60,10 @@ private:
 	virtual void AutonomousPeriodic() {
 		Scheduler::GetInstance()->Run();
 		CommandBase::shooter->UpdateBling();
+		
+		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
+		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
+		SmartDashboard::PutBoolean("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());		
 	}
 	
 	virtual void TeleopInit() {
