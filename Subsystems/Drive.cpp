@@ -26,9 +26,6 @@ Drive::Drive() : Subsystem("Drive") {
 	m_leftEncoder->Start();
 	m_rightEncoder->Start();
 	
-//	m_gyro = new Gyro(ANALOG_DRIVE_GYRO);
-//	m_accelerometer = new ADXL345_I2C(DRIVE_ACCELEROMETER_MODULE);
-	
 	m_mode = tank;
 	
 	m_cmdTank = NULL;
@@ -68,18 +65,6 @@ bool Drive::LoaderFront() {
 	return m_loaderFront;
 }
 
-//float Drive::GetHeading() {
-//	return m_gyro->GetAngle();
-//}
-//
-//float Drive::GetAccelX() {
-//	return m_accelerometer->GetAcceleration(ADXL345_I2C::kAxis_X);
-//}
-//
-//float Drive::GetAccelY() {
-//	return m_accelerometer->GetAcceleration(ADXL345_I2C::kAxis_Y);
-//}
-
 Drive::e_gear Drive::Gear() {
 	return m_gear;
 }
@@ -100,14 +85,14 @@ void Drive::JoystickArcadeDrive(float speed, float rotate) {
 }
 
 void Drive::JoystickTankDrive(float speedLeft, float speedRight) {
-//	if(m_loaderFront) {
-		m_driveOne->TankDrive(speedRight, speedLeft, false);
-		m_driveTwo->TankDrive(speedRight, speedLeft, false);
-//	}
-//	else {
-//		m_driveOne->TankDrive(-speedLeft, -speedRight, false);
-//		m_driveTwo->TankDrive(-speedLeft, -speedRight, false);
-//	}
+	if(m_loaderFront) {
+		m_driveOne->TankDrive(speedLeft, speedRight, false);
+		m_driveTwo->TankDrive(speedLeft, speedRight, false);
+	}
+	else {
+		m_driveOne->TankDrive(-speedRight, -speedLeft, false);
+		m_driveTwo->TankDrive(-speedRight, -speedLeft, false);
+	}
 }
 
 void Drive::SetFront(bool loaderFront) {

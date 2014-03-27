@@ -55,21 +55,15 @@ const UINT32 SOL_SHOOTER_LATCH					= 4;
 const UINT32 RELAY_COMPRESSOR					= 1;
 const UINT32 RELAY_CAMERA_LED					= 2;
 const UINT32 RELAY_BLING						= 3;
-const UINT32 RELAY_TEMP_SIDE_FUNNELS_A			= 4;		//Chuck's CR2 on practice
-const UINT32 RELAY_TEMP_SIDE_FUNNELS_B			= 5;		//Chuck's CR3 on practice
-const UINT32 RELAY_TEMP_LATCH					= 6;		//Chuck's CR4 on practice
 
 const UINT32 ANALOG_PRESSURE_SENSOR				= 1;
 const UINT32 ANALOG_RANGE_FINDER				= 2;
-const UINT32 ANALOG_DRIVE_GYRO					= 3;
-
-const UINT32 DRIVE_ACCELEROMETER_MODULE			= 1;
 
 const float DRV_DIST_PER_PULSE					= 1.0;			//Todo: Change this to the correct value
 const float AUTONOMOUS_DRIVE_BASE_SPEED			= 0.5;  		//Todo: Tweak this and the P constant to run smoothly
 const float AUTONOMOUS_DRIVE_P_CONSTANT			= 0.05;
 const float AUTONOMOUS_DRIVE_TIME				= 0.75;			//Todo: Set this to a reasonable time
-const float AUTONOMOUS_SPEED					= -0.85;
+const float AUTONOMOUS_SPEED					= 0.85;
 
 const float LOADER_MOTOR_SPEED					= 1.0;
 const float LOADER_MOTOR_REVERSE_SPEED			= -1.0;

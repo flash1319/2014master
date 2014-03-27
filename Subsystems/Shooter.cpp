@@ -4,7 +4,7 @@
 
 Shooter::Shooter() : Subsystem("Shooter") {
 	m_shooterMotor = new Victor(PWM_SHOOTER_PULLBACK);
-//	m_solLatch = new Solenoid(SOL_SHOOTER_LATCH_MODULE, SOL_SHOOTER_LATCH);
+	m_solLatch = new Solenoid(SOL_SHOOTER_LATCH_MODULE, SOL_SHOOTER_LATCH);
 	m_solEngage = new DoubleSolenoid(SOL_SHOOTER_ENGAGE_MODULE, SOL_SHOOTER_ENGAGE_A, SOL_SHOOTER_ENGAGE_B);
 	m_solHardStop = new DoubleSolenoid(SOL_HARD_STOP_MODULE, SOL_HARD_STOP_A, SOL_HARD_STOP_B);
 	m_retractedSwitch = new DigitalInput(GPIO_SHOOTER_RETRACTED_LIMIT);
@@ -15,8 +15,6 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	m_rangeFinder = new AnalogChannel(ANALOG_RANGE_FINDER);
 	m_cameraLED = new Relay(RELAY_CAMERA_LED);
 	m_bling = new Relay(RELAY_BLING);
-	
-	m_tempRelayLatch = new Relay(RELAY_TEMP_LATCH);
 	
 	m_shooterOverridden = false;
 	
@@ -34,12 +32,11 @@ bool Shooter::MotorRunning() {
 }
 
 bool Shooter::Latched() {
-//	return !m_solLatch->Get();
-	return m_tempRelayLatch->Get() == Relay::kReverse;
+	return !m_solLatch->Get();
 }
 
 bool Shooter::MotorEngaged() {
-	return m_solEngage->Get() == DoubleSolenoid::kForward;
+	return m_solEngage->Get() == DoubleSolenoid::kReverse;
 }
 
 bool Shooter::HardStopEngaged() {
@@ -59,7 +56,7 @@ bool Shooter::GearSwitchEngaged() {
 }
 
 bool Shooter::BallInside() {
-	return m_ballInSwitch->Get();
+	return !m_ballInSwitch->Get();
 }
 
 bool Shooter::LineBallIn() {
@@ -83,12 +80,11 @@ void Shooter::RunCatapult(float speed) {
 }
 
 void Shooter::LatchSolenoid(bool latch) {
-//	m_solLatch->Set(!latch);
-	m_tempRelayLatch->Set(latch ? Relay::kReverse : Relay::kForward);
+	m_solLatch->Set(!latch);
 }
 
 void Shooter::SetClutch(bool clutch) {
-	m_solEngage->Set(clutch ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
+	m_solEngage->Set(clutch ? DoubleSolenoid::kReverse : DoubleSolenoid::kForward);
 }
 
 void Shooter::SetHardStop(bool engage) {

@@ -9,11 +9,11 @@
 class Shooter: public Subsystem {
 private:
 	Victor *m_shooterMotor;
-//	Solenoid *m_solLatch;
+	Solenoid *m_solLatch;
 	DoubleSolenoid *m_solEngage, *m_solHardStop;
 	DigitalInput *m_retractedSwitch, *m_latchSwitch, *m_gearBoxSwitch, *m_ballInSwitch, *m_lineBallIn;
 	AnalogChannel *m_rangeFinder;
-	Relay *m_cameraLED, *m_bling, *m_tempRelayLatch;
+	Relay *m_cameraLED, *m_bling;
 	
 	bool m_shooterOverridden;
 public:

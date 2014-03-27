@@ -18,8 +18,6 @@ private:
 	RobotDrive *m_driveOne, *m_driveTwo;
 	DoubleSolenoid *m_solGear;
 	Encoder *m_leftEncoder, *m_rightEncoder;
-//	Gyro *m_gyro;
-//	ADXL345_I2C *m_accelerometer;
 	e_gear m_gear;
 	e_mode m_mode;
 	Command *m_cmdTank, *m_cmdArcade;
@@ -35,9 +33,6 @@ public:
 	float DistanceLeft();											//Returns the encoder distance for the left side
 	float DistanceRight();											//Returns the encoder distance for the right side
 	bool LoaderFront();												//Returns true if the loader is the front else false
-//	float GetHeading();												//Returns heading given by the gyro
-//	float GetAccelX();												//Returns Acceleration in X Direction
-//	float GetAccelY();												//Returns Acceleration in Y Direction
 	Drive::e_gear Gear();											//Returns what gear the robot is in	ex. low, high
 	Drive::e_mode Mode();											//Returns what mode the robot is in ex. arcade, tank
 	

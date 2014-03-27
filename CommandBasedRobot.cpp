@@ -32,7 +32,7 @@ private:
 		pneumatics = new Pneumatics();
 		pneumatics->Start();
 		
-//		InitializeDisplay();
+		InitializeDisplay();
 		
 		autoChooser = new SendableChooser();
 		autoChooser->AddDefault("One Ball Auto", new CgAutonomousOne());
@@ -92,7 +92,7 @@ private:
 		
 		UpdateSmartDashboard();
 		
-//		UpdateDisplay();
+		UpdateDisplay();
 		
 		CommandBase::shooter->UpdateBling();
 	}
@@ -103,7 +103,7 @@ private:
 	
 	virtual void DisabledPeriodic() {
 		UpdateSmartDashboard();
-//		UpdateDisplay();
+		UpdateDisplay();
 	}
 	
 	virtual void TestPeriodic() {
@@ -120,7 +120,6 @@ private:
 		SmartDashboard::PutNumber("Right Speed", CommandBase::drive->SpeedRight());
 		SmartDashboard::PutNumber("Left Distance", CommandBase::drive->DistanceLeft());
 		SmartDashboard::PutNumber("Right Distance", CommandBase::drive->DistanceRight());
-//		SmartDashboard::PutBoolean("Brake Deployed", CommandBase::drive->BrakeDeployed());
 		SmartDashboard::PutBoolean("Line Ball In", CommandBase::shooter->LineBallIn());
 		SmartDashboard::PutBoolean("Funnels Deployed", CommandBase::funnels->FunnelsDeployed());
 		SmartDashboard::PutBoolean("Intake Running", CommandBase::loader->IntakeRunning());
@@ -134,9 +133,6 @@ private:
 		SmartDashboard::PutBoolean("Shooter Gearbox Engaged Switch", CommandBase::shooter->GearSwitchEngaged());
 		SmartDashboard::PutBoolean("Ball Loaded", CommandBase::shooter->BallInside());
 		SmartDashboard::PutNumber("Range Finder Distance", CommandBase::shooter->GetDistance());
-//		SmartDashboard::PutNumber("Gyro Heading", CommandBase::drive->GetHeading());
-//		SmartDashboard::PutNumber("Acceleration X", CommandBase::drive->GetAccelX());
-//		SmartDashboard::PutNumber("Acceleration Y", CommandBase::drive->GetAccelY());
 		SmartDashboard::PutBoolean("Recording Telemetry", CommandBase::telemetry->RecordingTelemetry());
 		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
 		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
@@ -149,9 +145,6 @@ private:
 		CommandBase::telemetry->RecordSensorFloat("Drive Encoder Right Speed", CommandBase::drive->SpeedRight());
 		CommandBase::telemetry->RecordSensorFloat("Drive Encoder Left Distance", CommandBase::drive->DistanceLeft());
 		CommandBase::telemetry->RecordSensorFloat("Drive Encoder Right Distance", CommandBase::drive->DistanceRight());
-		//CommandBase::telemetry->RecordSensorFloat("Drive Gyro Heading", CommandBase::drive->GetHeading());
-		//CommandBase::telemetry->RecordSensorFloat("Drive Accelerometer X", CommandBase::drive->GetAccelX());
-		//CommandBase::telemetry->RecordSensorFloat("Drive Accelerometer Y", CommandBase::drive->GetAccel());
 		CommandBase::telemetry->RecordSensorBoolean("Loader Ball Proximity Switch", CommandBase::loader->BallProximity());
 		CommandBase::telemetry->RecordSensorBoolean("Pneumatics Digital Pressure Switch", pneumatics->TankFull());
 		CommandBase::telemetry->RecordSensorFloat("Pneumatics Analog Pressure Sensor", pneumatics->GetPressure());

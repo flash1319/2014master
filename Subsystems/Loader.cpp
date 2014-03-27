@@ -26,7 +26,7 @@ bool Loader::IntakeExtended() {
 }
 
 bool Loader::BallProximity() {
-	return !m_ballProximitySwitch->Get();
+	return m_ballProximitySwitch->Get();
 }
 
 void Loader::RunIntake(float speed) {
