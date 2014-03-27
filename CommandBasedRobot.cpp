@@ -11,7 +11,6 @@
 #include "Commands/CgAutonomousFour.h"
 #include "Commands/CgAutonomousFive.h"
 #include "Commands/CgAutonomousSix.h"
-#include "Commands/CgAutonomousSeven.h"
 #include "InsightLT/InsightLT.h"
 
 class CommandBasedRobot : public IterativeRobot {
@@ -41,7 +40,6 @@ private:
 		autoChooser->AddObject("Two Ball Auto", new CgAutonomousFour());
 		autoChooser->AddObject("No Ball Auto", new CgAutonomousFive());
 		autoChooser->AddObject("Kinect Hot Goal Auto", new CgAutonomousSix());
-		autoChooser->AddObject("Kinect Two Ball Auto", new CgAutonomousSeven());
 		SmartDashboard::PutData("Autonomous Mode:", autoChooser);
 		SmartDashboard::PutData("Toggle Drive Mode", new CmdDriveChangeMode());
 		SmartDashboard::PutData("Start Recording Telemetry", new CmdTelemetryRecordStart());
