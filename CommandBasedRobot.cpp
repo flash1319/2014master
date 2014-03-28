@@ -73,6 +73,7 @@ private:
 			autonomousCommand->Cancel();
 		}
 //		CommandBase::shooter->SetCameraLED(true);
+		CommandBase::shooter->SetFlashBling(false);
 		
 		printf("Teleop mode initialized.\n");
 	}
@@ -173,22 +174,22 @@ private:
 			emoticon = "=D";
 		}
 		else if(pressure >= 89) {
-			emoticon = "=)";
+			emoticon = "=}";
 		}
 		else if(pressure >= 72) {
-			emoticon = ":)";
+			emoticon = "=)";
 		}
 		else if(pressure >= 55) {
-			emoticon = ":|";
+			emoticon = "=|";
 		}
 		else if(pressure >= 38) {
-			emoticon = ":(";
-		}
-		else if(pressure >= 20) {
 			emoticon = "=(";
 		}
+		else if(pressure >= 20) {
+			emoticon = "={";
+		}
 		else {
-			emoticon = "D=";
+			emoticon = "=O";
 		}
 		
 		sprintf(temp, "%d%s%s", pressure, "psi ", emoticon.c_str());

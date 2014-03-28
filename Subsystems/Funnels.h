@@ -12,6 +12,7 @@ private:
 	// for methods that implement subsystem capabilities
 	
 	DoubleSolenoid *m_solFunnels;
+	
 public:
 	Funnels();
 	void InitDefaultCommand();

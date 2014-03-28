@@ -20,6 +20,8 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	
 	SetHardStop(true);
 	
+	m_flashBling = false;
+	
 	m_shooterMotor->SetSafetyEnabled(SAFETY_ENABLED);
 }
     
@@ -36,7 +38,7 @@ bool Shooter::Latched() {
 }
 
 bool Shooter::MotorEngaged() {
-	return m_solEngage->Get() == DoubleSolenoid::kReverse;
+	return m_solEngage->Get() == DoubleSolenoid::kForward;
 }
 
 bool Shooter::HardStopEngaged() {
@@ -75,6 +77,10 @@ bool Shooter::CameraLit() {
 	return m_cameraLED->Get() == Relay::kForward;
 }
 
+bool Shooter::GetBlingFlashing() {
+	return m_flashBling;
+}
+
 void Shooter::RunCatapult(float speed) {
 	m_shooterMotor->Set(-speed);
 }
@@ -84,7 +90,7 @@ void Shooter::LatchSolenoid(bool latch) {
 }
 
 void Shooter::SetClutch(bool clutch) {
-	m_solEngage->Set(clutch ? DoubleSolenoid::kReverse : DoubleSolenoid::kForward);
+	m_solEngage->Set(clutch ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
 }
 
 void Shooter::SetHardStop(bool engage) {
@@ -99,11 +105,15 @@ void Shooter::SetCameraLED(bool lit) {
 	m_cameraLED->Set(lit ? Relay::kForward : Relay::kReverse);
 }
 
-void Shooter::UpdateBling(){
-	if(HardStopEngaged() || DriverStation::GetInstance()->GetPacketNumber() % 12 >= 6) {
+void Shooter::UpdateBling() {
+	if(!m_flashBling || m_flashBling && DriverStation::GetInstance()->GetPacketNumber() % 12 >= 6) {
 		m_bling->Set(Relay::kForward);
 	}
 	else {
 		m_bling->Set(Relay::kReverse);
 	}
+}
+
+void Shooter::SetFlashBling(bool flash) {
+	m_flashBling = flash;
 }

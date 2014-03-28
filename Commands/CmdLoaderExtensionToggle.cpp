@@ -14,13 +14,13 @@ void CmdLoaderExtensionToggle::Initialize() {
 	m_endPacketNumber = DriverStation::GetInstance()->GetPacketNumber();
 	c = NULL;
 	if(loader->IntakeExtended() == true) {
-		if(funnels->FunnelsDeployed())
-		{
-			Command *cFunnels;
-			cFunnels = new CmdFunnelsUndeploy();
-			cFunnels->Start();
-			 m_endPacketNumber += (int)(50.0 * LOADER_FUNNELS_DEPLOYMENT_WAIT_TIME);
-		}
+//		if(funnels->FunnelsDeployed())
+//		{
+//			Command *cFunnels;
+//			cFunnels = new CmdFunnelsUndeploy();
+//			cFunnels->Start();
+//			 m_endPacketNumber += (int)(50.0 * LOADER_FUNNELS_DEPLOYMENT_WAIT_TIME);
+//		}
 		c = new CmdLoaderRetract();
 	}
 	else {

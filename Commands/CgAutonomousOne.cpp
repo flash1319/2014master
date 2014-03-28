@@ -16,10 +16,13 @@
 #include "CmdShooterSlowPull.h"
 #include "CmdDriveProgrammed.h"
 #include "CmdWait.h"
+#include "CmdShooterBlingFlash.h"
+#include "CmdShooterBlingSolid.h"
 #include "../Robotmap.h"
 
 CgAutonomousOne::CgAutonomousOne() {
 	//The loader and funnels extend and wait for the ball to settle
+	AddSequential(new CmdShooterBlingFlash());
 	AddSequential(new CmdLoaderExtend());
 	AddSequential(new CmdWait(LOADER_EXTENSION_TIME));
 	AddSequential(new CmdFunnelsDeploy());
@@ -44,4 +47,5 @@ CgAutonomousOne::CgAutonomousOne() {
 	AddSequential(new CmdShooterReverse());
 	AddSequential(new CmdWaitForShooterDisengage());
 	AddSequential(new CmdShooterStop());
+	AddSequential(new CmdShooterBlingFlash());
 }

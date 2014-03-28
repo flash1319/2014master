@@ -26,6 +26,8 @@
 #include "CmdLoaderStop.h"
 #include "CmdWait.h"
 #include "CmdWaitAndDrive.h"
+#include "CmdShooterBlingFlash.h"
+#include "CmdShooterBlingSolid.h"
 #include "../Robotmap.h"
 
 
@@ -33,6 +35,7 @@ CgAutonomousFour::CgAutonomousFour() {
 	//Shooter shoots and pulls back just as in tele-op
 //	AddParallel(new CmdWaitAndDrive());
 	//Extends the loader and funnels if they are not yet deployed and waits for the ball to settle
+	AddSequential(new CmdShooterBlingFlash());
 	AddSequential(new CmdLoaderExtendAndWait());
 	AddSequential(new CmdFunnelsDeployAndWait());
 	AddSequential(new CmdWait(BALL_WAIT_FOR_SETTLE));
@@ -64,7 +67,7 @@ CgAutonomousFour::CgAutonomousFour() {
 	
 	//Loader and funnels deploy again and wait for the ball to settle
 	AddSequential(new CmdDriveProgrammed(AUTONOMOUS_SPEED, AUTONOMOUS_SPEED, AUTONOMOUS_DRIVE_TIME));	
-	AddSequential(new CmdWait(0.5));
+	AddSequential(new CmdWait(1.0));
 //	AddSequential(new CmdLoaderExtend());
 //	AddSequential(new CmdWait(LOADER_EXTENSION_TIME));
 	AddSequential(new CmdWait(BALL_WAIT_FOR_SETTLE));
@@ -86,4 +89,5 @@ CgAutonomousFour::CgAutonomousFour() {
 	AddSequential(new CmdShooterReverse());
 	AddSequential(new CmdWaitForShooterDisengage());
 	AddSequential(new CmdShooterStop());
+	AddSequential(new CmdShooterBlingSolid());
 }

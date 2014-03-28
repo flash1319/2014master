@@ -17,12 +17,15 @@
 #include "CmdWaitForShooterDisengage.h"
 #include "CmdShooterSlowPull.h"
 #include "CmdWait.h"
+#include "CmdShooterBlingFlash.h"
+#include "CmdShooterBlingSolid.h"
 #include "../Robotmap.h"
 
 CgShooterShootPass::CgShooterShootPass() {
 //	SetInterruptible(false);
 	
 	//Extends the loader and funnels if they are not yet deployed and waits for the ball to settle
+	AddSequential(new CmdShooterBlingFlash());
 	AddSequential(new CmdShooterMotorsEngage());
 //	AddSequential(new CmdLoaderExtendAndWait());
 	AddSequential(new CmdFunnelsDeployAndWait());
@@ -45,4 +48,5 @@ CgShooterShootPass::CgShooterShootPass() {
 	AddSequential(new CmdShooterReverse());
 	AddSequential(new CmdWaitForShooterDisengage());
 	AddSequential(new CmdShooterStop());
+	AddSequential(new CmdShooterBlingSolid());
 }

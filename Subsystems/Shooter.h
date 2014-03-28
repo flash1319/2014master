@@ -15,7 +15,7 @@ private:
 	AnalogChannel *m_rangeFinder;
 	Relay *m_cameraLED, *m_bling;
 	
-	bool m_shooterOverridden;
+	bool m_shooterOverridden, m_flashBling;
 public:
 	Shooter();
 	void InitDefaultCommand();
@@ -32,6 +32,7 @@ public:
 	bool ShooterOverridden();		//Returns true if the shooter was overrided on this shooting cycle, else false
 	float GetDistance();			//Returns the distance from an object in front of the robot
 	bool CameraLit();				//Returns true if the Camera LED Ring is on, else false
+	bool GetBlingFlashing();		//Returns true if the bling is flashing, else false
 	
 	void RunCatapult(float speed);	//Sets the retraction motors to the speed passed in
 	void LatchSolenoid(bool latch);	//Extends latch if passed true else retracts
@@ -39,7 +40,8 @@ public:
 	void SetHardStop(bool engage);	//Extends the hard stop if true else retracts
 	void SetShooterOverridden(bool override);	//Sets the overridden variable to the value passed in
 	void SetCameraLED(bool lit);	//Turns on the LED ring around the camera if lit is true, else turns it off
-	void UpdateBling();				//Updates the bling periodically in Teleop and Autonomous
+	void UpdateBling();				//Updates the bling
+	void SetFlashBling(bool flash);	//Tells the bling to flash if passed true, else tells it to stay solid
 };
 
 #endif
