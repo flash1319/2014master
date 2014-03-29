@@ -120,6 +120,7 @@ private:
 		SmartDashboard::PutNumber("Left Distance", CommandBase::drive->DistanceLeft());
 		SmartDashboard::PutNumber("Right Distance", CommandBase::drive->DistanceRight());
 		SmartDashboard::PutBoolean("Line Ball In", CommandBase::shooter->LineBallIn());
+		SmartDashboard::PutBoolean("Winch Running", CommandBase::shooter->MotorRunning());
 		SmartDashboard::PutBoolean("Funnels Deployed", CommandBase::funnels->FunnelsDeployed());
 		SmartDashboard::PutBoolean("Intake Running", CommandBase::loader->IntakeRunning());
 		SmartDashboard::PutBoolean("Intake Extended", CommandBase::loader->IntakeExtended());
