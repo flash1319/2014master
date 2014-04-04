@@ -1,6 +1,7 @@
 #ifdef BUTTON_HEADERS
 //Include Statements:
 #include "Commands/CmdDriveShiftToggle.h"
+#include "Commands/CmdDriveSixCimsToggle.h"
 #include "Commands/CmdFunnelsToggle.h"
 #include "Commands/CmdDriveToggleFront.h"
 #include "Commands/CmdLoaderExtensionToggle.h"
@@ -20,6 +21,7 @@
 #else 
 //Driver Buttons:
 BUTTON_SETUP(m_driveShiftButton, m_driverPad, DRV_GEAR_SHIFT, WhenPressed, CmdDriveShiftToggle, )
+BUTTON_SETUP(m_driveSixCimsToggle, m_driverPad, DRV_SIX_CIMS_TOGGLE, WhenPressed, CmdDriveSixCimsToggle, )
 //BUTTON_SETUP(m_driveToggleFrontButton, m_driverPad, DRV_SWITCH_FRONT, WhenPressed, CmdDriveToggleFront, )
 BUTTON_SETUP(m_driverShooterShootButton, m_driverPad, DRV_SHOOT, WhenPressed, CmdShooterShoot, )
 BUTTON_SETUP(m_driverShooterShootPassButton, m_driverPad, DRV_SHOOT_PASS, WhenPressed, CmdShooterShootPass, )

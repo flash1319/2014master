@@ -130,14 +130,14 @@ private:
 		SmartDashboard::PutString("Shot Length", CommandBase::shooter->HardStopEngaged() ? "Long Shot" : "Short Shot");
 		SmartDashboard::PutBoolean("Shooter Fully Retracted", CommandBase::shooter->FullyRetracted());
 		SmartDashboard::PutBoolean("Shooter Latched Limit", CommandBase::shooter->LatchedSwitch());
-		SmartDashboard::PutBoolean("Shooter Gearbox Engaged Switch", CommandBase::shooter->GearSwitchEngaged());
+		SmartDashboard::PutBoolean("Dog Gear", CommandBase::shooter->GearSwitchEngaged());
 		SmartDashboard::PutBoolean("Ball Loaded", CommandBase::shooter->BallInside());
 		SmartDashboard::PutNumber("Range Finder Distance", CommandBase::shooter->GetDistance());
 		SmartDashboard::PutBoolean("Recording Telemetry", CommandBase::telemetry->RecordingTelemetry());
 		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
 		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
 		SmartDashboard::PutBoolean("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());
-		SmartDashboard::PutNumber("Reverse Motor Speed", (DriverStation::GetInstance()->GetAnalogIn(1) - 2.5) / 2.5);
+		SmartDashboard::PutBoolean("Six CIM Drivetrain", CommandBase::drive->SixCimDrive());
 	}
 	
 	void UpdateTelemetry() {

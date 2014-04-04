@@ -9,10 +9,7 @@ CmdShooterPullBack::CmdShooterPullBack() {
 
 // Called just before this Command runs the first time
 void CmdShooterPullBack::Initialize() {
-	float speed = (DriverStation::GetInstance()->GetAnalogIn(1) - 2.5) / 2.5;
-	shooter->RunCatapult(speed);
-//	shooter->RunCatapult(SHOOTER_MOTOR_SPEED);
-//	shooter->RunCatapult(0.5);
+	shooter->RunCatapult(SHOOTER_MOTOR_SPEED);
 	int cp = DriverStation::GetInstance()->GetPacketNumber();
 	m_endPacketNumber =  cp + 5;
 	m_slowPacketNumber = cp + (int)(50.0 *

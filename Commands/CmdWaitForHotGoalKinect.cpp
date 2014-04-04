@@ -8,7 +8,7 @@ CmdWaitForHotGoalKinect::CmdWaitForHotGoalKinect() {
 
 // Called just before this Command runs the first time
 void CmdWaitForHotGoalKinect::Initialize() {
-	m_endPacketNumber = DriverStation::GetInstance()->GetPacketNumber() + (int)((AUTONOMOUS_WAIT_AFTER_DEPLOYMENT + 1.0) * 50.); 
+	m_endPacketNumber = DriverStation::GetInstance()->GetPacketNumber() + (int)((AUTONOMOUS_WAIT_AFTER_DEPLOYMENT + 1.0) * 50.0); 
 }
 
 // Called repeatedly when this Command is scheduled to run

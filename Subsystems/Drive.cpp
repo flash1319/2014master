@@ -33,7 +33,8 @@ Drive::Drive() : Subsystem("Drive") {
 	
 	Gear(high);
 	
-	m_loaderFront = false; 
+	m_loaderFront = false;
+	m_sixCimDrive = true;
   
 	m_driveOne->SetSafetyEnabled(SAFETY_ENABLED);
 	m_driveTwo->SetSafetyEnabled(SAFETY_ENABLED);
@@ -65,6 +66,10 @@ bool Drive::LoaderFront() {
 	return m_loaderFront;
 }
 
+bool Drive::SixCimDrive() {
+	return m_sixCimDrive;
+}
+
 Drive::e_gear Drive::Gear() {
 	return m_gear;
 }
@@ -76,22 +81,46 @@ Drive::e_mode Drive::Mode() {
 void Drive::JoystickArcadeDrive(float speed, float rotate) {
 	if(m_loaderFront) {
 		m_driveOne->ArcadeDrive(speed, -rotate, false);
-		m_driveTwo->ArcadeDrive(speed, -rotate, false);
+		
+		if(m_sixCimDrive) {
+			m_driveTwo->ArcadeDrive(speed, -rotate, false);
+		}
+		else {
+			m_driveTwo->ArcadeDrive(0.0, 0.0, false);
+		}
 	}
 	else {
 		m_driveOne->ArcadeDrive(-speed, -rotate, false);
-		m_driveTwo->ArcadeDrive(-speed, -rotate, false);
+		
+		if(m_sixCimDrive) {
+			m_driveTwo->ArcadeDrive(-speed, -rotate, false);
+		}
+		else {
+			m_driveTwo->ArcadeDrive(0.0, 0.0, false);
+		}
 	}
 }
 
 void Drive::JoystickTankDrive(float speedLeft, float speedRight) {
 	if(m_loaderFront) {
 		m_driveOne->TankDrive(speedLeft, speedRight, false);
-		m_driveTwo->TankDrive(speedLeft, speedRight, false);
+		
+		if(m_sixCimDrive) {
+			m_driveTwo->TankDrive(speedLeft, speedRight, false);
+		}
+		else {
+			m_driveTwo->TankDrive(0.0, 0.0, false);
+		}
 	}
 	else {
 		m_driveOne->TankDrive(-speedRight, -speedLeft, false);
-		m_driveTwo->TankDrive(-speedRight, -speedLeft, false);
+		
+		if(m_sixCimDrive) {
+			m_driveTwo->TankDrive(-speedRight, -speedLeft, false);
+		}
+		else {
+			m_driveTwo->TankDrive(0.0, 0.0, false);
+		}
 	}
 }
 
@@ -99,12 +128,16 @@ void Drive::SetFront(bool loaderFront) {
 	m_loaderFront = loaderFront;
 }
 
+void Drive::SixCimDrive(bool sixCims) {
+	m_sixCimDrive = sixCims;
+}
+
 void Drive::Gear(Drive::e_gear gear) {
 	if(gear == low) {
-		m_solGear->Set(DoubleSolenoid::kReverse);
+		m_solGear->Set(DoubleSolenoid::kForward);
 	}
 	else {
-		m_solGear->Set(DoubleSolenoid::kForward);
+		m_solGear->Set(DoubleSolenoid::kReverse);
 	}
 	m_gear = gear;
 }
