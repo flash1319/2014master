@@ -21,6 +21,7 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	SetHardStop(true);
 	
 	m_flashBling = false;
+	m_blingOn = true;
 	
 	m_shooterMotor->SetSafetyEnabled(SAFETY_ENABLED);
 }
@@ -77,6 +78,10 @@ bool Shooter::CameraLit() {
 	return m_cameraLED->Get() == Relay::kForward;
 }
 
+bool Shooter::GetBlingOn() {
+	return m_blingOn;
+}
+
 bool Shooter::GetBlingFlashing() {
 	return m_flashBling;
 }
@@ -106,12 +111,16 @@ void Shooter::SetCameraLED(bool lit) {
 }
 
 void Shooter::UpdateBling() {
-	if(!m_flashBling || m_flashBling && DriverStation::GetInstance()->GetPacketNumber() % 12 >= 6) {
+	if(m_blingOn && (!m_flashBling || m_flashBling && DriverStation::GetInstance()->GetPacketNumber() % 12 >= 6)) {
 		m_bling->Set(Relay::kForward);
 	}
 	else {
 		m_bling->Set(Relay::kReverse);
 	}
+}
+
+void Shooter::SetBlingOn(bool blingOn) {
+	m_blingOn = blingOn;
 }
 
 void Shooter::SetFlashBling(bool flash) {

@@ -34,7 +34,7 @@ Drive::Drive() : Subsystem("Drive") {
 	Gear(high);
 	
 	m_loaderFront = false;
-	m_sixCimDrive = true;
+	m_sixCimDrive = false;
   
 	m_driveOne->SetSafetyEnabled(SAFETY_ENABLED);
 	m_driveTwo->SetSafetyEnabled(SAFETY_ENABLED);
@@ -134,10 +134,10 @@ void Drive::SixCimDrive(bool sixCims) {
 
 void Drive::Gear(Drive::e_gear gear) {
 	if(gear == low) {
-		m_solGear->Set(DoubleSolenoid::kForward);
+		m_solGear->Set(DoubleSolenoid::kReverse);
 	}
 	else {
-		m_solGear->Set(DoubleSolenoid::kReverse);
+		m_solGear->Set(DoubleSolenoid::kForward);
 	}
 	m_gear = gear;
 }

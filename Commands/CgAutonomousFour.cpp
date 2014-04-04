@@ -28,6 +28,8 @@
 #include "CmdWaitAndDrive.h"
 #include "CmdShooterBlingFlash.h"
 #include "CmdShooterBlingSolid.h"
+#include "CmdDriveSixCims.h"
+#include "CmdDriveFourCims.h"
 #include "../Robotmap.h"
 
 
@@ -36,6 +38,7 @@ CgAutonomousFour::CgAutonomousFour() {
 //	AddParallel(new CmdWaitAndDrive());
 	//Extends the loader and funnels if they are not yet deployed and waits for the ball to settle
 	AddSequential(new CmdShooterBlingFlash());
+	AddSequential(new CmdDriveSixCims());
 	AddSequential(new CmdLoaderExtendAndWait());
 	AddSequential(new CmdFunnelsDeployAndWait());
 	AddSequential(new CmdWait(BALL_WAIT_FOR_SETTLE));
@@ -89,5 +92,6 @@ CgAutonomousFour::CgAutonomousFour() {
 	AddSequential(new CmdShooterReverse());
 	AddSequential(new CmdWaitForShooterDisengage());
 	AddSequential(new CmdShooterStop());
+	AddSequential(new CmdDriveFourCims());
 	AddSequential(new CmdShooterBlingSolid());
 }

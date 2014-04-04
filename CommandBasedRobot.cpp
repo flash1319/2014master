@@ -59,9 +59,8 @@ private:
 		Scheduler::GetInstance()->Run();
 		CommandBase::shooter->UpdateBling();
 		
-		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
-		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
-		SmartDashboard::PutBoolean("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());		
+		UpdateSmartDashboard();
+		UpdateDisplay();
 	}
 	
 	virtual void TeleopInit() {
@@ -74,6 +73,7 @@ private:
 		}
 //		CommandBase::shooter->SetCameraLED(true);
 		CommandBase::shooter->SetFlashBling(false);
+		CommandBase::drive->SixCimDrive(false);
 		
 		printf("Teleop mode initialized.\n");
 	}
@@ -112,6 +112,7 @@ private:
 	void UpdateSmartDashboard() {
 		SmartDashboard::PutString("Mode", CommandBase::drive->Mode() == Drive::arcade ? "Arcade" : "Tank");
 		SmartDashboard::PutString("Gear", CommandBase::drive->Gear() == Drive::high ? "High" : "Low");
+		SmartDashboard::PutString("Drivetrain CIMs", CommandBase::drive->SixCimDrive() ? "6" : "4");
 		SmartDashboard::PutString("Front Side", CommandBase::drive->LoaderFront() ? "Loader" : "Shooter");
 		SmartDashboard::PutBoolean("Air Pressure Full", pneumatics->TankFull());
 		SmartDashboard::PutNumber("Pressure", pneumatics->GetPressure());
@@ -137,7 +138,6 @@ private:
 		SmartDashboard::PutNumber("Kinect Left Y", CommandBase::oi->KinectLeftY());
 		SmartDashboard::PutNumber("Kinect Right Y", CommandBase::oi->KinectRightY());
 		SmartDashboard::PutBoolean("Kinect Signal Hot Goal", CommandBase::oi->KinectGoalHot());
-		SmartDashboard::PutBoolean("Six CIM Drivetrain", CommandBase::drive->SixCimDrive());
 	}
 	
 	void UpdateTelemetry() {

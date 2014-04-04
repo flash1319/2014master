@@ -3,6 +3,7 @@
 #include "Commands/CmdDriveShiftToggle.h"
 #include "Commands/CmdDriveSixCimsToggle.h"
 #include "Commands/CmdFunnelsToggle.h"
+#include "Commands/CmdFunnelsToggleOnly.h"
 #include "Commands/CmdDriveToggleFront.h"
 #include "Commands/CmdLoaderExtensionToggle.h"
 #include "Commands/CmdLoaderLoadingExtensionToggle.h"
@@ -16,6 +17,7 @@
 #include "Commands/CmdShooterShootPass.h"
 #include "Commands/CmdLoaderIntakeToggle.h"
 #include "Commands/CmdShooterBlingToggle.h"
+#include "Commands/CmdShooterBlingOnToggle.h"
 #include "Commands/CgShooterFullPullback.h"
 
 #else 
@@ -28,13 +30,15 @@ BUTTON_SETUP(m_driverShooterShootPassButton, m_driverPad, DRV_SHOOT_PASS, WhenPr
 BUTTON_SETUP(m_driverShooterPullback, m_driverPad, DRV_SHOOTER_PULLBACK, WhenPressed, CgShooterFullPullback, )
 
 //Operator Buttons:
-BUTTON_SETUP(m_operatorLoaderLoadingExtendButton, m_operatorPad, OPR_LOADER_LOADING_EXTEND, WhenPressed, CmdLoaderLoadingExtensionToggle, )
+//BUTTON_SETUP(m_operatorLoaderLoadingExtendButton, m_operatorPad, OPR_LOADER_LOADING_EXTEND, WhenPressed, CmdLoaderLoadingExtensionToggle, )
 BUTTON_SETUP(m_operatorLoaderUnjamButton, m_operatorPad, OPR_LOADER_UNJAM, WhenPressed, CmdLoaderUnjamToggle, )
 BUTTON_SETUP(m_operatorHardStopButton, m_operatorPad, OPR_HARD_STOP, WhenPressed, CmdShooterHardStopToggle, )
 BUTTON_SETUP(m_operatorLoaderExtendButton, m_operatorPad, OPR_LOADER_EXTEND, WhenPressed, CmdLoaderExtensionToggle, )
 BUTTON_SETUP(m_operatorLoaderRun, m_operatorPad, OPR_LOADER_RUN, WhenPressed, CmdLoaderIntakeToggle, )
 BUTTON_SETUP(m_operatorFunnelsButton, m_operatorPad, OPR_FUNNELS, WhenPressed, CmdFunnelsToggle, )
+BUTTON_SETUP(m_operatorFunnelsOnlyButton, m_operatorPad, OPR_FUNNELS_ONLY, WhenPressed, CmdFunnelsToggleOnly, )
 BUTTON_SETUP(m_operatorBlingToggleButton, m_operatorPad, OPR_BLING_TOGGLE, WhenPressed, CmdShooterBlingToggle, )
+BUTTON_SETUP(m_operatorBlingOnToggleButton, m_operatorPad, OPR_BLING_ON_TOGGLE, WhenPressed, CmdShooterBlingOnToggle, )
 //BUTTON_SETUP(m_operatorLatchButton, m_operatorPad, OPR_LATCH, WhenPressed, CmdShooterLatchToggle, )
 //BUTTON_SETUP(m_operatorShooterMotorsButton, m_operatorPad, OPR_ENGAGE_MOTORS, WhenPressed, CmdShooterMotorsToggle, )
 //BUTTON_SETUP(m_operatorShooterPullBackButton, m_operatorPad, OPR_SHOOTER_PULL_BACK, WhenPressed, CmdShooterPullBack, )

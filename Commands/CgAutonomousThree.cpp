@@ -21,11 +21,14 @@
 #include "CmdWait.h"
 #include "CmdShooterBlingFlash.h"
 #include "CmdShooterBlingSolid.h"
+#include "CmdDriveSixCims.h"
+#include "CmdDriveFourCims.h"
 #include "../Robotmap.h"
 
 CgAutonomousThree::CgAutonomousThree() {
 	//Turns on the camera LED ring to sense retro-reflective tape
 	AddSequential(new CmdShooterBlingFlash());
+	AddSequential(new CmdDriveSixCims());
 	AddSequential(new CmdCameraLightOn());
 	
 	//The loader and funnels extend and wait for the ball to settle
@@ -59,5 +62,6 @@ CgAutonomousThree::CgAutonomousThree() {
 	
 	//Turns of the camera LED ring as it is not needed after autonomous
 	AddSequential(new CmdCameraLightOff());
+	AddSequential(new CmdDriveFourCims());
 	AddSequential(new CmdShooterBlingSolid());
 }

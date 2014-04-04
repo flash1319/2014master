@@ -32,6 +32,8 @@
 #include "CmdTurnWithKinectTwo.h"
 #include "CmdShooterBlingFlash.h"
 #include "CmdShooterBlingSolid.h"
+#include "CmdDriveSixCims.h"
+#include "CmdDriveFourCims.h"
 #include "../Robotmap.h"
 
 
@@ -39,6 +41,7 @@ CgAutonomousSeven::CgAutonomousSeven() {
 	//Shooter shoots and pulls back just as in tele-op
 	//Extends the loader and funnels if they are not yet deployed and waits for the ball to settle
 	AddSequential(new CmdShooterBlingFlash());
+	AddSequential(new CmdDriveSixCims());
 	AddSequential(new CmdKinectCheckAuto());
 	AddSequential(new CmdTurnWithKinect());
 	AddSequential(new CmdLoaderExtendAndWait());
@@ -95,5 +98,6 @@ CgAutonomousSeven::CgAutonomousSeven() {
 	AddSequential(new CmdShooterReverse());
 	AddSequential(new CmdWaitForShooterDisengage());
 	AddSequential(new CmdShooterStop());
+	AddSequential(new CmdDriveFourCims());
 	AddSequential(new CmdShooterBlingSolid());
 }
