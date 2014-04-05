@@ -63,7 +63,7 @@ const float DRV_DIST_PER_PULSE					= 1.0;			//Todo: Change this to the correct v
 const float AUTONOMOUS_DRIVE_BASE_SPEED			= 0.5;  		//Todo: Tweak this and the P constant to run smoothly
 const float AUTONOMOUS_DRIVE_P_CONSTANT			= 0.05;
 const float AUTONOMOUS_DRIVE_TIME				= 0.25;			//Todo: Set this to a reasonable time
-const float AUTONOMOUS_SPEED					= 0.85;
+const float AUTONOMOUS_SPEED					= 0.93;
 
 const float LOADER_MOTOR_SPEED					= 1.0;
 const float LOADER_MOTOR_REVERSE_SPEED			= -1.0;
